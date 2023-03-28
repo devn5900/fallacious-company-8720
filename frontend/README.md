@@ -62,3 +62,28 @@ Don't modify
 ## \* logo and pre-loader is inside the images folder</li>
 
 <br>
+  
+# Schema
+
+    {
+    "name": "Men's Purple Justice League Society Graphic Printed Oversized T-shirt",
+    "category": "T-Shirt",
+    "price": 499,
+    "design": "Graphic Print",
+    "image": "https://images.bewakoof.com/t640/men-s-purple-justice-league-society-graphic-printed-oversized-t-shirt-581274-1676971303-1.jpg",
+    "type": "Men",
+    "offer": "14% OFF",
+    "brand": "Boogy®",
+    "discount": "66% OFF",
+    "tags": [
+      {
+        "type": "fit",
+        "label": "OVERSIZED FIT",
+        "bgColor": "rgba(82, 82, 82, 0.8)",
+        "textColor": "#fff"
+      }
+    ],
+    "description": "For TriBe Members official dc comics merchandise by bewakoof.com Men's Purple Justice League Society Graphic Printed Oversized T-shirt Men's Purple Justice League Society Graphic Printed Oversized T-shirt",
+    "rating": "1.3"
+
+}
