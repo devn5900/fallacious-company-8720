@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* margin-left: 5px;
+    margin-right: 5px; */
+}
+.main{
+   margin-left: 40px;
+   margin-right: 45px;
+   margin-top: 20px;
+}
+.hero{ 
+    display: grid; 
+     grid-template-columns: repeat(4,1fr);
+     
+}
+.card-1{
+    margin-top: 30px;
+     display: grid; 
+    grid-template-columns: 1.8fr 0.89fr;
+    gap: 12px;
+}
+.btn-1{
+    background-color: white;
+    position: absolute;
+    padding: 8px 20px;
+    margin-top: -50px;
+    left: 300px;
+    color: #26262C;
+    font-size: 12px;
+}
+.btn-1 >a:hover{
+    text-decoration-line: underline;
+}
+.card-2{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
