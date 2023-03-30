@@ -55,11 +55,29 @@ const login = async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(500).send({ msg: "Internal Server Error", code: "41" });
+    res.status(500).send({ msg: "Internal Server Error", code: 58 });
   }
 };
+const addAddress = async (req, res) => {
+  const { address } = req.body;
+  if (!address) {
+    res.status(206).send({ msg: "Invalid Data" });
+    return;
+  } else {
+    try {
+      const status = await userModel.findByIdAndUpdate(
+        { _id: req.body.userId },
+        { $set: { address: address } }
+      );
 
+      res.status(200).send({ msg: "Address Updated" });
+    } catch (error) {
+      res.status(206).send({ msg: "Internal Server Error", code: 75 });
+    }
+  }
+};
 module.exports = {
   register,
+  addAddress,
   login,
 };
