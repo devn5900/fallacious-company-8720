@@ -4,6 +4,7 @@ const { connection } = require("../connection/db.con");
 const { prodRouter } = require("../routes/products.routes");
 const { userRouter } = require("../routes/users.routes");
 const { cartRouter } = require("../routes/carts.routes");
+
 const app = express();
 require("dotenv").config();
 const port = process.env.PORT || 3000;
