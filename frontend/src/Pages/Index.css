@@ -36,7 +36,7 @@
     grid-template-columns: repeat(4,1fr);
     gap: 20px;
     /* text-align: center; */
-    margin-top: 30px;
+    margin-top: 25px;
     height: auto;
 }
 .card-3{
@@ -82,6 +82,41 @@
     color: rgb(16, 116, 116);
     font-size: 13px;
 }
+ 
+ .slider{
+    
+    transform: scale(1);
+    transition: 0.3s ease-in-out; 
+}
+.slider:hover{
+    transform: scale(1.05);
+} 
 
+.slick-arrow.slick-prev,.slick-arrow.slick-next{
+    z-index: 1; 
+    height: 60px; 
+    width: 60px;
+    border-radius: 50%;
+    
+} 
+.slick-arrow.slick-prev::before,.slick-arrow.slick-next::before{
+    font-size: 55px;
+    color: #fff;
+}
 
-
+.slick-arrow.slick-next{
+    margin-right: 70px;
+}
+.slick-arrow.slick-prev{
+    margin-left: 60px;
+}
+.top-rated{
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 450;
+}
+.card-6{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
