@@ -1,5 +1,6 @@
 import React from "react";
 import "./Index.css"
+import {StarIcon} from '@chakra-ui/icons'
 const Index = () => {
   return <div className="main">
     <div className="container">
@@ -71,6 +72,86 @@ const Index = () => {
                 <img src="https://images.ctfassets.net/5de70he6op10/2XUxhNlu24HaHTFRAghRS3/f30d5364574fc72b718e910f087b2685/484733194-ls_m5a.jpg?w=2640&q=80&fm=webp" alt="" />
                 <div className="btn-2" style={{marginLeft:"500px"}}><a href="">shop new clothing</a></div>
               </div>
+            </div>
+            <div className="top-rated">
+              <h3>Top-Rated Picks</h3>
+              <hr />
+            </div>
+            <div className="card-5">
+              
+              <div>
+                  <div>
+                    <img src="https://images.ctfassets.net/5de70he6op10/3yNbvWqQXailKck2nLnaJP/7f1d29590bd5779c37c6dc495cc56daa/484733228-ls_customerfave_a.jpg?w=630&q=80&fm=webp" alt="" />
+                 </div>
+                 <div className="detail">
+                    <p >CUSTOMER FAVORITE</p>
+                    <p className="heading">The Bettina Tiered Shirt Dress</p>
+                    <div style={{display:"flex",gap:"3px",marginTop:"-15px",marginBottom:"10px"}}>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                    </div>
+                    <p className="disctiption">This dress is simply gorgeous - the fabric is exquisite.</p>
+                     <p className="shop-link"><a href="">shop now</a></p>
+                 </div>
+              </div>
+              <div>
+                  <div>
+                    <img src="https://images.ctfassets.net/5de70he6op10/1wvoOBYHC9zcXpOFI0rASL/c19a5326e17d028f98f7e694fe9442bb/484733230-ls_customerfave_b.jpg?w=630&q=80&fm=webp" alt="" />
+                 </div>
+                 <div className="detail">
+                    <p>CUSTOMER FAVORITE</p>
+                    <p className="heading">The Viviette Lace Bralette</p>
+                    <div style={{display:"flex",gap:"3px",marginTop:"-15px",marginBottom:"10px"}}>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                    </div>
+                     <p className="disctiption">This bralette is beautiful...Feminine and edgy and comfortable!</p>
+                     <p className="shop-link"><a href="">shop now</a></p>
+                 </div>
+              </div>
+              <div>
+                  <div>
+                    <img src="https://images.ctfassets.net/5de70he6op10/4Y5h33Z2DMlhmcDTZ85yQ9/4a829347d2391f0649abf40b5ab31d65/484733234-ls_customerfave_c.jpg?w=630&q=80&fm=webp" alt="" />
+                 </div>
+                 <div className="detail">
+                    <p>CUSTOMER FAVORITE</p>
+                    <p className="heading">The Guilhermina Ballet Mules</p>
+                    <div style={{display:"flex",gap:"3px",marginTop:"-15px",marginBottom:"10px"}}>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                    </div>
+                     <p className="disctiption">Stunning...I absolutely LOVE this shoe!</p>
+                     <p className="shop-link"><a href="">shop now</a></p>
+                 </div>
+              </div>
+              <div>
+                  <div>
+                    <img src="https://images.ctfassets.net/5de70he6op10/7h8K0HHlG7VatvoyzVnMXB/7198c5548ea54f0747bf1cdf9bc6db00/484733237-ls_customerfave_d.jpg?w=630&q=80&fm=webp" alt="" />
+                 </div>
+                 <div className="detail">
+                    <p>CUSTOMER FAVORITE</p>
+                    <p className="heading">The Maeve Cropped Racerback Tank</p>
+                    <div style={{display:"flex",gap:"3px",marginTop:"-15px",marginBottom:"10px"}}>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                      <p><StarIcon boxSize={2}/></p>
+                    </div>
+                     <p className="disctiption">Perfect...bought this in as many colors as possible!</p>
+                     <p className="shop-link"><a href="">shop now</a></p>
+                 </div>
+              </div>
+              
 
             </div>
       </div>
