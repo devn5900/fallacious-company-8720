@@ -4,7 +4,7 @@
 
 ## Endpoint
 
-    https://busy-jade-mussel-sock.cyclic.app/products
+    https://vast-duck-coat.cyclic.app/products
 
 ## Product Schema
 
@@ -41,15 +41,15 @@
 
     All data related to type 'Men'
 
-        https://busy-jade-mussel-sock.cyclic.app/products?type=Men
+        https://vast-duck-coat.cyclic.app/products?type=Men
 
     All data related to type 'Women'
 
-       https://busy-jade-mussel-sock.cyclic.app/products?type=Women
+       https://vast-duck-coat.cyclic.app/products?type=Women
 
     All data related to type 'accessories'
 
-       https://busy-jade-mussel-sock.cyclic.app/products?type=accessories
+       https://vast-duck-coat.cyclic.app/products?type=accessories
 
 # sorting by
 
@@ -59,7 +59,7 @@
 
         You can Change order according to your need 'asc' or 'desc'
 
-        https://busy-jade-mussel-sock.cyclic.app/products?type=accessories&sort=price&order=desc
+        https://vast-duck-coat.cyclic.app/products?type=accessories&sort=price&order=desc
 
         Method : GET
 
@@ -72,7 +72,7 @@
 
     You can Change order according to your need 'asc' or 'desc'
 
-    https://busy-jade-mussel-sock.cyclic.app/products?type=accessories&sort=rating&order=desc
+    https://vast-duck-coat.cyclic.app/products?type=accessories&sort=rating&order=desc
 
     Method : GET
 
@@ -80,7 +80,7 @@
 
     search by name, description, category, design, brand
 
-    https://busy-jade-mussel-sock.cyclic.app/products?type=accessories&q=Printed
+    https://vast-duck-coat.cyclic.app/products?type=accessories&q=Printed
 
     Method : GET
 
@@ -90,7 +90,7 @@
 
     Filter by category
 
-      https://busy-jade-mussel-sock.cyclic.app/products?type=accessories&category=Backpack
+      https://vast-duck-coat.cyclic.app/products?type=accessories&category=Backpack
 
       Method : GET
 
@@ -114,7 +114,7 @@
 
 # Single Product
 
-    https://busy-jade-mussel-sock.cyclic.app/products/:id
+    https://vast-duck-coat.cyclic.app/products/:id
 
     :id -> Product Id
 
@@ -126,7 +126,7 @@
 
 ## Signup Endpoints
 
-    https://busy-jade-mussel-sock.cyclic.app/user/signup
+    https://vast-duck-coat.cyclic.app/user/signup
 
     Method : POST
 
@@ -154,7 +154,7 @@
 
 ## Login Endpoints
 
-    https://busy-jade-mussel-sock.cyclic.app/user/login
+    https://vast-duck-coat.cyclic.app/user/login
 
     Method : POST
 
@@ -184,7 +184,7 @@
 
 ## Update User Address Endpoints
 
-    https://busy-jade-mussel-sock.cyclic.app/user/address
+    https://vast-duck-coat.cyclic.app/user/address
 
     Method : PATCH
 
@@ -204,7 +204,7 @@
 
 # Cart Endpoint (Token Required)
 
-    https://busy-jade-mussel-sock.cyclic.app/cart
+    https://vast-duck-coat.cyclic.app/cart
 
     Method : GET
 
@@ -218,7 +218,7 @@
 
 # Add Item in the Cart
 
-    https://busy-jade-mussel-sock.cyclic.app/cart/:id
+    https://vast-duck-coat.cyclic.app/cart/:id
 
     :id -> Product Id
 
@@ -234,7 +234,7 @@
 
 # Remove Item from Cart
 
-    https://busy-jade-mussel-sock.cyclic.app/cart/:id
+    https://vast-duck-coat.cyclic.app/cart/:id
 
     :id -> Product Id
 
