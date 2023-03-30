@@ -1,8 +1,19 @@
 import { Box, Flex } from "@chakra-ui/react";
-import React from "react";
-import DummyComponents from "../../Components/ProductPage/DummyComponents";
+import React, { useEffect } from "react";
+
 import SideBar from "../../Components/ProductPage/SideBar";
+import { getMensData } from "../../Redux/productReducer/action";
+import { useDispatch, useSelector } from "react-redux";
+import MensProductsCard from "../../Components/ProductPage/MensProductsCard";
 const Mens = () => {
+  const dispatch = useDispatch();
+  const { data, isError, isLoading } = useSelector(
+    (store) => store.productReducer
+  );
+  console.log(data, "data redux");
+  useEffect(() => {
+    dispatch(getMensData());
+  }, [dispatch]);
   return (
     <Box>
       <Flex direction={["column", "row"]}>
@@ -21,10 +32,8 @@ const Mens = () => {
           mr={[5, 5, 10, 20, 20]}
           gap="10"
         >
-          <DummyComponents /> <DummyComponents /> <DummyComponents />{" "}
-          <DummyComponents /> <DummyComponents /> <DummyComponents />{" "}
-          <DummyComponents /> <DummyComponents /> <DummyComponents />{" "}
-          <DummyComponents /> <DummyComponents /> <DummyComponents />
+          {data.length > 0 &&
+            data.map((e) => <MensProductsCard key={e._id} {...e} />)}
         </Box>
       </Flex>
     </Box>
