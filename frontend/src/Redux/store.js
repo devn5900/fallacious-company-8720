@@ -5,10 +5,12 @@ import {
   compose,
 } from "redux";
 import thunk from "redux-thunk";
+import { reducer as cartReducer } from "./cartReducer/reducer";
 import { reducer as productReducer } from "./productReducer/reducer";
-// add your reducer here
 const combineReducer = combineReducers({
-  productReducer,
+  // add your reducer here
+  cartReducer,
+  productReducer
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
