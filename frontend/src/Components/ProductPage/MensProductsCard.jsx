@@ -4,11 +4,10 @@ import {
   Image,
   Badge,
   useColorModeValue,
-  Link,
   Text,
 } from "@chakra-ui/react";
 
-import { Link as ReachLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function MensProductsCard({
   id,
@@ -20,7 +19,7 @@ function MensProductsCard({
   rating,
 }) {
   return (
-    <Flex p={5} w="sm" gap={6} alignItems="center" justifyContent="center">
+    <Flex p={5} w="sm" alignItems="center" justifyContent="center">
       <Box
         bg={useColorModeValue("white", "gray.800")}
         w="98%"
@@ -28,7 +27,6 @@ function MensProductsCard({
         borderTop={"0px"}
         rounded="md"
         shadow="md"
-        position="relative"
       >
         <Image
           src={image}
@@ -39,7 +37,7 @@ function MensProductsCard({
         <Badge colorScheme="gray" mt={-20} mr={"100%"}>
           {rating}⭐
         </Badge>
-        <Link as={ReachLink} to={`/product/${id}/details`}>
+        <Link to={`/product/${id}/details`}>
           <Box p="3">
             <Box alignItems="baseline" mt={-25}>
               <Badge
@@ -74,12 +72,17 @@ function MensProductsCard({
             </Box>
             <Flex justifyContent="space-between" alignContent="center">
               <Box fontSize="xl" color={useColorModeValue("gray.800", "white")}>
-                <Box as="span" color={"gray.600"} fontSize="md">
+                <Box as="span" fontSize="xl" color={"gray.600"}>
                   ₹
                 </Box>
                 {`${price.toFixed(2)}`}
-                <Badge colorScheme="red" mb={2} textDecoration={"line-through"}>
-                  ₹1499
+                <Badge
+                  fontSize={"md"}
+                  colorScheme="orange"
+                  mb={2}
+                  textDecoration={"line-through"}
+                >
+                  ₹ {(price * 100) / 50}
                 </Badge>
               </Box>
             </Flex>
