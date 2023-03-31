@@ -45,7 +45,7 @@ export const Cart = () => {
           </Heading>
   
           <Stack spacing="6">
-            { cartData.length>0 && cartData.map((item) => {
+            { data?.length>0 && data?.map((item) => {
               return(
                     <CartItem key={item.id} {...item} />
               )
