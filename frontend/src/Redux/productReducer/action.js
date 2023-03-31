@@ -9,7 +9,7 @@ import axios from "axios";
 //Mens Data action function
 export const getMensData = (obj) => (dispatch) => {
   dispatch({ type: GET_DATA_REQUEST });
-  console.log("o", obj);
+  // console.log("o", obj);
   axios
     .get("https://vast-duck-coat.cyclic.app/products?type=Men", obj)
     .then((res) =>
@@ -22,7 +22,7 @@ export const getWomensData = (obj) => (dispatch) => {
   dispatch({ type: GET_DATA_REQUEST });
 
   axios
-    .get("https://vast-duck-coat.cyclic.app/products?type=Men", obj)
+    .get("https://vast-duck-coat.cyclic.app/products?type=Women", obj)
     .then((res) =>
       dispatch({ type: GET_WOMENS_DATA_SUCESS, payload: res.data.data })
     )

@@ -17,7 +17,12 @@ function MensProductsCard({
   description,
   brand,
   rating,
+  offer,
 }) {
+  let offerPresent = parseInt(offer);
+  let discountMoney = (price * offerPresent) / 100;
+  let finalPrice = price + discountMoney;
+
   return (
     <Flex p={5} w="sm" alignItems="center" justifyContent="center">
       <Box
@@ -77,12 +82,16 @@ function MensProductsCard({
                 </Box>
                 {`${price.toFixed(2)}`}
                 <Badge
+                  ml="2"
                   fontSize={"md"}
-                  colorScheme="orange"
+                  colorScheme="red"
                   mb={2}
                   textDecoration={"line-through"}
                 >
-                  ₹ {(price * 100) / 50}
+                  ₹ {Math.floor(finalPrice)}
+                </Badge>
+                <Badge ml="3" fontSize={"md"} mb={2}>
+                  {offer}
                 </Badge>
               </Box>
             </Flex>
