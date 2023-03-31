@@ -3,7 +3,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <Box bg="#6E7CBB" p={"3"} color="white">
+    <Box bg="#6E7CBB" p={"2"} color="white">
       <Flex
         justifyContent={"center"}
         alignItems={"center"}

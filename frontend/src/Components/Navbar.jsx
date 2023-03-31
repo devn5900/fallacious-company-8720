@@ -6,11 +6,13 @@ import MainNav from "./NavChild/MainNav";
 import Links from "./NavChild/Links";
 const Navbar = () => {
   return (
-    <Box>
+    <Box pos={"sticky"} top={"0"} zIndex={"1000"}>
       <Banner />
-      <Lang />
-      <MainNav />
-      <Links />
+      <Box bg={"white"}>
+        <Lang />
+        <MainNav />
+        <Links />
+      </Box>
     </Box>
   );
 };
