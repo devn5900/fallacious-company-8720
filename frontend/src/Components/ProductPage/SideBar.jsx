@@ -28,8 +28,14 @@ const SideBar = () => {
   };
   // to handle sort by
   const handleSort = (e) => {
+    // let newSortOrder = [...order];
+    // if (newSortOrder.includes(e.target.value)) {
+    //   newSortOrder.splice(newSortOrder.indexOf(e.target.value));
+    // } else {
+    //   newSortOrder.push(e.target.value);
+    // }
+    // setOrder(newSortOrder);
     setOrder(e.target.value);
-    // console.log(e.target.value);
   };
   // to persist data on url
   React.useEffect(() => {
@@ -40,7 +46,7 @@ const SideBar = () => {
     setSearchParams(params);
   }, [category, order]);
   return (
-    <Box alignItems="center">
+    <Box alignItems="center" mt="3">
       <Text fontWeight="bold">Filter by Category</Text>
       <Checkbox
         value="T-Shirt"
@@ -95,7 +101,7 @@ const SideBar = () => {
         </Stack>
       </RadioGroup>
       {/* sorts by rating */}
-      <Text fontWeight="bold" mt="5">
+      {/* <Text fontWeight="bold" mt="5">
         Sort By Rating
       </Text>
       <RadioGroup mt="2" defaultValue={order}>
@@ -107,7 +113,7 @@ const SideBar = () => {
             Decending
           </Radio>
         </Stack>
-      </RadioGroup>
+      </RadioGroup> */}
     </Box>
   );
 };

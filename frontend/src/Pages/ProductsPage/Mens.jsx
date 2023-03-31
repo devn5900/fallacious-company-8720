@@ -14,12 +14,15 @@ const Mens = () => {
     (store) => store.productReducer
   );
   const [searchParams] = useSearchParams();
+
   const dispatch = useDispatch();
   let obj = {
     params: {
       category: searchParams.getAll("category"),
-      // _sort: searchParams.get("order") && "price",
-      // _order: searchParams.get("order"),
+      sort: searchParams.get("order") && "price",
+      order: searchParams.get("order"),
+      // sort: searchParams.get("order") && "rating",
+      // order: searchParams.get("order"),
     },
   };
 
@@ -27,7 +30,7 @@ const Mens = () => {
     dispatch(getMensData(obj));
   }, [location.search]);
   ///
-  console.log(data, "data redux");
+  // console.log(data, "data redux");
 
   return (
     <Box>
