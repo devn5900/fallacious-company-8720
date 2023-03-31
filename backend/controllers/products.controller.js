@@ -46,7 +46,16 @@ const getProducts = async (req, res) => {
     query.type = { $regex: `.*${type}.*`, $options: "$i" };
   }
   if (category) {
-    query.category = { $regex: `.*${category}.*`, $options: "$i" };
+    if (Array.isArray(category)) {
+      if (!query.$or) {
+        query.$or = [];
+      }
+      category.forEach((el) => {
+        query.$or.push({ category: { $regex: `.*${el}.*`, $options: "$i" } });
+      });
+    } else {
+      query.category = { $regex: `.*${category}.*`, $options: "$i" };
+    }
   }
   if (design) {
     query.design = { $regex: `.*${design}.*`, $options: "$i" };
