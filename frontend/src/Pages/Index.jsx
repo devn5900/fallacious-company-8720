@@ -1,60 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Index.css"
 import {StarIcon} from '@chakra-ui/icons'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useEffect } from "react";
+import axios from "axios"
 const Index = () => {
-  const slider = [
-    {
-      id: 1,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45576216608798.jpg",
-    },
-    {
-      id: 2,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45576216674334.jpg",
-    },
-    {
-      id: 3,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45576216739870.jpg",
-    },
-    {
-      id: 4,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45576216805406.jpg",
-    },
-    {
-      id: 5,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45622605905950.jpg",
-    },
-    {
-      id: 6,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45622606037022.jpg",
-    },
-    {
-      id: 7,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45619580305438.jpg",
-    },
-    {
-      id: 8,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45619580436510.jpg",
-    },
-    {
-      id: 9,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45536791658526.jpg",
-    },
-    {
-      id: 10,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45536791789598.jpg",
-    },
-    {
-      id: 11,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45619571556382.jpg",
-    },
-    {
-      id: 12,
-      img: "https://assets.tatacliq.com/medias/sys_master/images/45619569983518.jpg",
-    },
-  ]
+  const [slider1,setSlider1]=useState([])
+  const [slider2,setSlider2]=useState([])
+  useEffect(()=>{
+       axios.get(`https://vast-duck-coat.cyclic.app/products?type=Men`).then((res)=>{
+           setSlider1(res.data.data)
+       })  
+       axios.get(`https://vast-duck-coat.cyclic.app/products?type=Women`).then((res)=>{
+        setSlider2(res.data.data)
+       })
+  },[])
   const settings2 = {
     infinite: true,
     speed: 500,
@@ -242,11 +204,11 @@ const Index = () => {
               <hr style={{marginTop:"8px"}}/>
               <hr />
             </div>
-            <div >
+            <div style={{marginBottom:"-250px"}}>
               <Slider {...settings2}>
-              {slider.map((item) => (
+              {slider1.map((item) => (
                 <div key={item.id} className="slider" >
-                  <img className="slide1" src={item.img} alt="" />
+                  <img className="slide1" src={item.image} alt="" />
                 </div>
               ))}
             </Slider>
@@ -257,11 +219,11 @@ const Index = () => {
               <hr style={{marginTop:"8px"}}/>
               <hr />
             </div>
-              <div >
+              <div style={{marginBottom:"-250px"}}>
               <Slider {...settings2}>
-              {slider.map((item) => (
+              {slider2.map((item) => (
                 <div key={item.id} className="slider" >
-                  <img className="slide1" src={item.img} alt="" />
+                  <img className="slide1" src={item.image} alt="" />
                 </div>
               ))}
             </Slider>

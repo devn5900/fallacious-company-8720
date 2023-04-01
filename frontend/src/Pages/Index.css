@@ -13,6 +13,7 @@
      grid-template-columns: repeat(4,1fr);
      
 }
+
 .card-1{
     margin-top: 30px;
      display: grid; 
@@ -84,7 +85,7 @@
 }
  
  .slider{
-    
+
     transform: scale(1);
     transition: 0.3s ease-in-out; 
 }
@@ -105,18 +106,54 @@
 }
 
 .slick-arrow.slick-next{
-    margin-right: 70px;
+    margin-right: 60px;
+    margin-top: -110px;
+    
 }
 .slick-arrow.slick-prev{
     margin-left: 60px;
+    margin-top: -110px;
 }
 .top-rated{
     margin-top: 30px;
     font-size: 14px;
     font-weight: 450;
+
 }
 .card-6{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 18px;
 }
+.slick-slide {
+    /* margin: 0 10px; Change 10px to the desired gap size */
+    margin: auto;
+   box-sizing: border-box;
+   margin: 0 8px;
+   overflow: hidden;
+  }
+  @media (min-width:769px)  and (max-width:1000px){
+    .hero,.card-5{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    .card-1{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }  
+    .card-2{
+        grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    }
+}
+@media (max-width:768px) {
+   
+    .hero,.card-5,.card-1,.card-2,.card-3,.card-4{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .card-6{
+        grid-template-columns: repeat(2,1fr); 
+    }
+}
+  
