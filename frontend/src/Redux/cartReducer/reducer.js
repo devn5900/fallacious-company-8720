@@ -1,4 +1,4 @@
-import { ERROR_CART_ITEM, GET_CART_ITEM, REQUEST_CART_ITEM } from "./actionTypes"
+import { DELETE_ERROR_CART_ITEM, DELETE_GET_CART_ITEM, DELETE_REQUEST_CART_ITEM, ERROR_CART_ITEM, GET_CART_ITEM, REQUEST_CART_ITEM } from "./actionTypes"
 
 
 const initialState = {
@@ -15,6 +15,12 @@ export const reducer = (state = initialState,{type,payload})=>{
             return {...state,isLoading:false,isError:false,data:payload};
         case ERROR_CART_ITEM:
             return {...state,isLoading:false,isError:true}
+        case DELETE_REQUEST_CART_ITEM:
+            return {...state,isLoading:true};
+        case DELETE_GET_CART_ITEM:
+            return {...state,isLoading:false,isError:false};
+        case DELETE_ERROR_CART_ITEM:
+            return {...state,isError:true}
         default:
             return initialState
     }

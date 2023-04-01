@@ -11,6 +11,7 @@ import {
 import axios from 'axios';
 import { useEffect, useState } from 'react';
   import { FaArrowRight } from 'react-icons/fa';
+import { useNavigate } from 'react-router';
   import { cartData } from './data';
   
   const OrderSummaryItem = (props) => {
@@ -24,24 +25,30 @@ import { useEffect, useState } from 'react';
       </Flex>
     )
   }
- 
+  
   
   export const CartOrderSummary = () => {
-  const [price,setPrice] = useState([]);
+    const [price,setPrice] = useState([]);
+    const navigate = useNavigate();
+    
+    
+    useEffect(()=>{
+      axios.get("https://vast-duck-coat.cyclic.app/products/")
+      .then((res)=>setPrice(res.data)).catch((err)=>console.log(err))
+    },[]);
+    
+    let sum = 0;
+    const x = price.data?.map((ele)=>{
+      return  sum += ele.price;
+    })
 
-useEffect(()=>{
-  axios.get("https://vast-duck-coat.cyclic.app/products/")
-  .then((res)=>setPrice(res.data)).catch((err)=>console.log(err))
-},[])
-// let sum = 0;
-// const x = price.data.map((ele)=>{
-//   return sum += ele.price;
-// })
-console.log("sum",price);
 
     const handelChange = (e)=>{
       const {value,checked} = e.target;
-      console.log(value);
+      if(checked){
+        sum -= value;
+        return sum;
+      }
     }
 
     return (
@@ -50,14 +57,14 @@ console.log("sum",price);
         <Text color={'black'} size="md">Order Summary</Text>
   
         <Stack spacing="6">
-          <OrderSummaryItem label="Subtotal" value={`$${60}`} />
-          <OrderSummaryItem label="Shipping + Tax" value={` $40 + $20 `+" = "+(40+20)}>
+          <OrderSummaryItem label="Subtotal" value={`₹${60}`} />
+          <OrderSummaryItem label="Shipping + Tax" value={` ₹40 + ₹20 `+" = "+(40+20)}>
             <Link href="#" textDecor="underline">
               Calculate shipping
             </Link>
           </OrderSummaryItem>
           <Checkbox value={100} onChange={handelChange}>
-            <OrderSummaryItem borderWidth={"1px"} label="Coupon Code $-100" >
+            <OrderSummaryItem borderWidth={"1px"} label="Coupon Code ₹-100" >
               <Link href="#" textDecor="underline">
                 Add coupon code
               </Link>
@@ -68,11 +75,11 @@ console.log("sum",price);
               Total
             </Text>
             <Text fontSize="xl" fontWeight="extrabold">
-              597
+              {sum}
             </Text>
           </Flex>
         </Stack>
-        <Button colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+        <Button onClick={()=>navigate("/checkout")} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
           Checkout
         </Button>
       </Stack>
