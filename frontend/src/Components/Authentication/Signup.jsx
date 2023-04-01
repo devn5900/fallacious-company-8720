@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom'
 export default function SignUp() {
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
-  const [gender,Setgender] = useState("")
+  const [confirm_pass,Setpass] = useState("")
   const [password,setPassword] = useState("")
   const payload={
     email:email,
     password:password,
-    gender:gender,
+    confirm_pass:confirm_pass,
     name:name
   }
   const UserRegister=()=>{
        console.log(payload)
-    fetch("https://ill-red-cod-robe.cyclic.app/users/register",{
+    fetch("https://vast-duck-coat.cyclic.app/user/signup",{
       method:"POST",
       headers:{
         "Content-type":"application/json"
@@ -31,19 +31,19 @@ export default function SignUp() {
       <FormLabel>
     Name
   </FormLabel>
-  <Input value={name} onChange={(e)=>setName(e.target.value)}  placeholder="Name"/>
+  <Input type='text' value={name} onChange={(e)=>setName(e.target.value)}  placeholder="Name"/>
   <FormLabel>
     Email
   </FormLabel>
-  <Input  value={email} onChange={(e)=>setEmail(e.target.value)}  placeholder="email"/>
+  <Input type='email'  value={email} onChange={(e)=>setEmail(e.target.value)}  placeholder="email"/>
 <FormLabel>
 Password
 </FormLabel>
-<Input  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="password"/>
+<Input type='password'  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="password"/>
   <FormLabel>
-    Gender
+    Confirm password
   </FormLabel>
-  <Input  value={gender} onChange={(e)=>Setgender(e.target.value)}  placeholder="Gender"/>
+  <Input type='password'  value={confirm_pass} onChange={(e)=>Setpass(e.target.value)}  placeholder="Gender"/>
   <Button onClick={UserRegister} mt={"5px"} type="submit">Submit</Button>
 </Box>
 
