@@ -1,29 +1,21 @@
 import React, { useState } from 'react'
+import {useSelector,useDispatch} from 'react-redux'
 import { Box, Button, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import { userLogin } from '../../Redux/Authreducer/action'
 export default function Login() {
+  const {load,isErr,token}= useSelector((store)=>store.AuthReducer)
+  const dispatch= useDispatch();
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
-  const payload={
-    email:email,
-    password:password,
-  }
-     const Userlogin=()=>{
-       console.log(payload)
-       fetch("https://vast-duck-coat.cyclic.app/user/login",{
-        method:"POST",
-           headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify(payload)
-       }).then((res)=>res.json()).then((res)=>{
-      console.log(res)
-      localStorage.setItem("token",res.token)
+ 
+  const Userlogin=()=>{
+    const payload={
+      email:email,
+      password:password,
     }
-    ).catch((err)=>{
-        console.log(err)
-    })  
+      dispatch(userLogin(payload))
   }
  
   return (
