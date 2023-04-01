@@ -8,7 +8,7 @@
     "server": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Devesh Kumar Mishra",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",

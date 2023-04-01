@@ -1,77 +1,41 @@
-import { CloseButton, Flex, Link, Select, SelectProps, useColorModeValue } from '@chakra-ui/react'
-import { CartProductMeta } from './cartProduct'
-import { PriceTag } from './priceTag';
+import { Heading, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { DeleteIcon } from '@chakra-ui/icons';
+import "./cart.css";
 
-
-const QuantitySelect = (props) => {
-  return (
-    <Select
-      maxW="64px"
-      aria-label="Select quantity"
-      focusBorderColor={useColorModeValue('blue.500', 'blue.200')}
-      {...props}
-    >
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </Select>
-  )
-}
-
-export const CartItem = (props) => {
-  const {
-    isGiftWrapping,
-    name,
-    description,
-    quantity,
-    imageUrl,
-    currency,
-    price,
-    onChangeQuantity,
-    onClickDelete,
-  } = props
-
-  return (
-    <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align="center">
-      <CartProductMeta
-        name={name}
-        description={description}
-        image={imageUrl}
-        isGiftWrapping={isGiftWrapping}
-      />
-
-      {/* Desktop */}
-      <Flex width="full" justify="space-between" display={{ base: 'none', md: 'flex' }}>
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
-          }}
-        />
-        <PriceTag price={price} currency={currency} />
-        <CloseButton aria-label={`Delete ${name} from cart`} onClick={onClickDelete} />
-      </Flex>
-
-      {/* Mobile */}
-      <Flex
-        mt="4"
-        align="center"
-        width="full"
-        justify="space-between"
-        display={{ base: 'flex', md: 'none' }}
-      >
-        <Link fontSize="sm" textDecor="underline">
-          Delete
-        </Link>
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
-          }}
-        />
-        <PriceTag price={price} currency={currency} />
-      </Flex>
-    </Flex>
-  )
+export const CartItem = (props)=>{
+    console.log("props",props);
+    const {image,name,price,discount,design,category} = props;
+    const [product,setProduct] = useState(1);
+    const addProduct = ()=>{
+        setProduct(prev=>prev+1);
+    }
+    const decProduct = ()=>{
+        setProduct(prev=>prev-1);
+    }
+    return(
+        <div id="card">
+            <div>
+                <img src={image} alt="image" />
+            </div>
+            <div style={{marginLeft:"2%"}}>
+                <p>{name}</p>
+                <Text> {design}</Text>
+                <Text> category : {category}</Text>
+                <p> Price : <span style={{color:"red",fontWeight:"bold"}}>₹{price}</span></p>
+                <Heading size={"md"} color={"gold"} fontWeight={"bold"}>{discount}</Heading>
+                <Text>Quantity :</Text>
+                <div id="butn">
+                    <div id="btn">
+                        <button disabled={product<=1} onClick={decProduct}>-</button>
+                        <button disabled>{product}</button>
+                        <button onClick={addProduct}>+</button>
+                    </div>
+                    <div id="remove">
+                        <button><DeleteIcon ml={8} w={8} h={8} border={"1px solid black"} borderRadius={9} p={1} /></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }

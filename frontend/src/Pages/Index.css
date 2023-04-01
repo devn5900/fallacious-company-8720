@@ -2,8 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* margin-left: 5px;
-    margin-right: 5px; */
 }
 .main{
    margin-left: 40px;
@@ -15,6 +13,7 @@
      grid-template-columns: repeat(4,1fr);
      
 }
+
 .card-1{
     margin-top: 30px;
      display: grid; 
@@ -33,12 +32,13 @@
 .btn-1 >a:hover,.btn-2 >a:hover{
     text-decoration-line: underline;
 }
-.card-2{
+.card-2,.card-5{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 20px;
-    text-align: center;
-    margin-top: 30px;
+    /* text-align: center; */
+    margin-top: 25px;
+    height: auto;
 }
 .card-3{
     display: grid;
@@ -58,6 +58,102 @@
 .card-4{
     margin-top: 30px;
 }
+.detail {
+     margin-top: 25px;
+     font-size: 10.4px;
+     font-family: "Spectral Extra Light", serif;
+}
+.heading{
+    margin-bottom: 20px;
+    font-family: "Spectral Extra Light", serif;
+    font-size: 16px;
+    font-weight: lighter;
+    letter-spacing: 1.2px;
+    color: #63636b;
+    margin-top: 20px;
+}
+.disctiption{
+    font-size: 14px;
+    font-weight: 100;
+    margin-bottom: 12px;
 
+}
+.shop-link{
+    text-decoration: underline;
+    color: rgb(16, 116, 116);
+    font-size: 13px;
+}
+ 
+ .slider{
 
+    transform: scale(1);
+    transition: 0.3s ease-in-out; 
+}
+.slider:hover{
+    transform: scale(1.05);
+} 
 
+.slick-arrow.slick-prev,.slick-arrow.slick-next{
+    z-index: 1; 
+    height: 60px; 
+    width: 60px;
+    border-radius: 50%;
+    
+} 
+.slick-arrow.slick-prev::before,.slick-arrow.slick-next::before{
+    font-size: 55px;
+    color: #fff;
+}
+
+.slick-arrow.slick-next{
+    margin-right: 60px;
+    margin-top: -110px;
+    
+}
+.slick-arrow.slick-prev{
+    margin-left: 60px;
+    margin-top: -110px;
+}
+.top-rated{
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 450;
+
+}
+.card-6{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+.slick-slide {
+    /* margin: 0 10px; Change 10px to the desired gap size */
+    margin: auto;
+   box-sizing: border-box;
+   margin: 0 8px;
+   overflow: hidden;
+  }
+  @media (min-width:769px)  and (max-width:1000px){
+    .hero,.card-5{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    .card-1{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }  
+    .card-2{
+        grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    }
+}
+@media (max-width:768px) {
+   
+    .hero,.card-5,.card-1,.card-2,.card-3,.card-4{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .card-6{
+        grid-template-columns: repeat(2,1fr); 
+    }
+}
+  
