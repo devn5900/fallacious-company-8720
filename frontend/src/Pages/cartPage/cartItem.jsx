@@ -4,6 +4,7 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import "./cart.css";
 
 export const CartItem = (props)=>{
+    console.log("props",props);
     const {image,name,price,discount,design,category} = props;
     const [product,setProduct] = useState(1);
     const addProduct = ()=>{
@@ -21,7 +22,7 @@ export const CartItem = (props)=>{
                 <p>{name}</p>
                 <Text> {design}</Text>
                 <Text> category : {category}</Text>
-                <p> Price : $<span style={{color:"red",fontWeight:"bold"}}>{price}</span></p>
+                <p> Price : <span style={{color:"red",fontWeight:"bold"}}>₹{price}</span></p>
                 <Heading size={"md"} color={"gold"} fontWeight={"bold"}>{discount}</Heading>
                 <Text>Quantity :</Text>
                 <div id="butn">

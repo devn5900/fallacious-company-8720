@@ -5,6 +5,7 @@ import Footer from "../Components/Footer";
 import Index from "../Pages/Index";
 import Mens from "../Pages/ProductsPage/Mens";
 import Cart from "../Pages/cartPage/cart";
+import Checkout from "../Pages/checkoutPage/checkout";
 const AllRoutes = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const AllRoutes = () => {
         <Route path="/" element={<Index />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/mens" element={<Mens />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </>

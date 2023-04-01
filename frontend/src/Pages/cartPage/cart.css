@@ -9,7 +9,10 @@
     height: 250px;
     width: 200px;
 }
+
 #btn>button{
+    height: 40px;
+    width: 30px;
     border: 1px solid grey;
     padding: 8px;
     border-radius: 7px;
