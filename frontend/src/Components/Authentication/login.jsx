@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 export default function Login() {
   const [name,setName] = useState("")
@@ -28,8 +28,9 @@ export default function Login() {
  
   return (
 <>
-    <Box pt={"2rem"} pb={"2rem"} bg={"black"}  color={"dodgerblue"}>
-    <Box  boxShadow={"dark-lg"} width={"50%"} m={"auto"} bg="white"  p={"1rem"} borderRadius={"10px"}>
+    <Box pt={"2rem"} pb={"2rem"} bg={"#fff"}  color={"dodgerblue"}>
+      <Heading mb={"1rem"} color={"doggerblue"} textAlign={"center"} fontSize={"lg"}>Login</Heading>
+    <Box  boxShadow={"lg"} width={"50%"} m={"auto"} bg="white"  p={"1rem"} borderRadius={"10px"}>
 
   <FormLabel>
     Email
