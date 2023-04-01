@@ -79,31 +79,33 @@ const MainNav = () => {
         direction={["column-reverse", "column-reverse", "row"]}
         alignItems={["", "space-around", "center"]}
       >
-        <Flex
-          borderTop={"2px solid darkblue"}
-          p={"1"}
-          fontSize={["1.3rem", "1.7rem"]}
-          alignItems={"center"}
-          borderLeft={"1px solid #C3CBCF"}
-          borderRight={"1px solid #C3CBCF"}
-        >
-          {/* <Image src={logo} w={"6rem"} /> border={"3px solid #EDA565"} */}
-          <Text>Fas</Text>
-          <Text borderRadius={"full"} p={"0.2rem"}>
-            <Flex>
-              {" "}
-              <Text borderLeft={"3px solid #EDA565"}>|</Text>-
-              <Text borderRight={"3px solid #EDA565"}>|</Text>
-            </Flex>
-          </Text>
-          <Text>ion</Text>&nbsp;<Text>St</Text>
-          <Text
-            border={"3px solid #EDA565"}
-            borderRadius={"full"}
-            p={"1rem"}
-          ></Text>
-          <Text>re</Text>
-        </Flex>
+        <Link as={ReachLink} to="/">
+          <Flex
+            borderTop={"2px solid darkblue"}
+            p={"1"}
+            fontSize={["1.3rem", "1.7rem"]}
+            alignItems={"center"}
+            borderLeft={"1px solid #C3CBCF"}
+            borderRight={"1px solid #C3CBCF"}
+          >
+            {/* <Image src={logo} w={"6rem"} /> border={"3px solid #EDA565"} */}
+            <Text>Fas</Text>
+            <Text borderRadius={"full"} p={"0.2rem"}>
+              <Flex>
+                {" "}
+                <Text borderLeft={"3px solid #EDA565"}>|</Text>-
+                <Text borderRight={"3px solid #EDA565"}>|</Text>
+              </Flex>
+            </Text>
+            <Text>ion</Text>&nbsp;<Text>St</Text>
+            <Text
+              border={"3px solid #EDA565"}
+              borderRadius={"full"}
+              p={"1rem"}
+            ></Text>
+            <Text>re</Text>
+          </Flex>
+        </Link>
         <Flex>
           <Flex
             gap={"9"}
@@ -195,23 +197,25 @@ const MainNav = () => {
                 ""
               )}
             </Box>
-            <Box pos={"relative"}>
-              <Icon
-                as={BsBagHeart}
-                fontSize={"1.9rem"}
-                color={"#6E7CBB"}
-                cursor={"pointer"}
-              />
-              <Badge
-                pos={"absolute"}
-                top={"0"}
-                right={"-1"}
-                bg="#6E7CBB"
-                color={"white"}
-              >
-                0
-              </Badge>
-            </Box>
+            <Link as={ReachLink} to="/cart">
+              <Box pos={"relative"} color={"white"}>
+                <Icon
+                  as={BsBagHeart}
+                  fontSize={"1.9rem"}
+                  color={"#6E7CBB"}
+                  cursor={"pointer"}
+                />
+                <Badge
+                  pos={"absolute"}
+                  top={"0"}
+                  right={"-1"}
+                  bg="#6E7CBB"
+                  color={"white"}
+                >
+                  0
+                </Badge>
+              </Box>
+            </Link>
           </Flex>
         </Flex>
       </Flex>
