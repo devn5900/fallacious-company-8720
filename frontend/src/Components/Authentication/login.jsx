@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-export default function SignUp() {
+export default function Login() {
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
@@ -11,7 +11,7 @@ export default function SignUp() {
   }
      const Userlogin=()=>{
        console.log(payload)
-       fetch("https://clean-earrings-yak.cyclic.app/users/login",{
+       fetch("https://vast-duck-coat.cyclic.app/user/login",{
         method:"POST",
            headers:{
             "Content-Type":"application/json"

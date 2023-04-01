@@ -14,10 +14,10 @@ export default function SignUp() {
   }
   const UserRegister=()=>{
        console.log(payload)
-    fetch("https://vast-duck-coat.cyclic.app/user/signup",{
+    fetch("https://vast-duck-coat.cyclic.app/user/register",{
       method:"POST",
       headers:{
-        "Content-type":"application/json"
+        "Content-Type":"application/json"
       },
       body:JSON.stringify(payload)
     }).then((res)=>res.json()).then((res)=>console.log(res))
