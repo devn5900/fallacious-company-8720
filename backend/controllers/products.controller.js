@@ -43,7 +43,7 @@ const getProducts = async (req, res) => {
     query.price = { $gt: min, $lt: max };
   }
   if (type) {
-    query.type = { $regex: `.*${type}.*`, $options: "$i" };
+    query.type = { $regex: `.*${type}.*` };
   }
   if (category) {
     if (Array.isArray(category)) {
