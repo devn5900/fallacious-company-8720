@@ -28,8 +28,14 @@ const SideBar = () => {
   };
   // to handle sort by
   const handleSort = (e) => {
+    // let newSortOrder = [...order];
+    // if (newSortOrder.includes(e.target.value)) {
+    //   newSortOrder.splice(newSortOrder.indexOf(e.target.value));
+    // } else {
+    //   newSortOrder.push(e.target.value);
+    // }
+    // setOrder(newSortOrder);
     setOrder(e.target.value);
-    // console.log(e.target.value);
   };
   // to persist data on url
   React.useEffect(() => {
@@ -40,32 +46,48 @@ const SideBar = () => {
     setSearchParams(params);
   }, [category, order]);
   return (
-    <Box alignItems="center">
-      <Text fontWeight="bold">Filter by</Text>
+    <Box alignItems="center" mt="3">
+      <Text fontWeight="bold">Filter by Category</Text>
       <Checkbox
-        value="male"
-        isChecked={category.includes("male")}
+        value="T-Shirt"
+        isChecked={category.includes("T-Shirt")}
         onChange={handleFilter}
       >
-        Men's
+        T-Shirt
       </Checkbox>
       <br />
       <Checkbox
-        value="female"
-        isChecked={category.includes("female")}
+        value="Sweatshirt"
+        isChecked={category.includes("Sweatshirt")}
         onChange={handleFilter}
       >
-        Women's
+        Sweatshirt
       </Checkbox>
       <br />
       <Checkbox
-        value="children"
-        isChecked={category.includes("children")}
+        value="Kurta"
+        isChecked={category.includes("Kurta")}
         onChange={handleFilter}
       >
-        Accessories
+        Kurta
       </Checkbox>
-      <Text fontWeight="bold" mt="8">
+      <br />
+      <Checkbox
+        value="Hoodies"
+        isChecked={category.includes("Hoodies")}
+        onChange={handleFilter}
+      >
+        Hoodies
+      </Checkbox>
+      <br />
+      <Checkbox
+        value="Shorts"
+        isChecked={category.includes("Shorts")}
+        onChange={handleFilter}
+      >
+        Shorts
+      </Checkbox>
+      <Text fontWeight="bold" mt="5">
         Sort By Price
       </Text>
       <RadioGroup mt="2" defaultValue={order}>
@@ -78,6 +100,20 @@ const SideBar = () => {
           </Radio>
         </Stack>
       </RadioGroup>
+      {/* sorts by rating */}
+      {/* <Text fontWeight="bold" mt="5">
+        Sort By Rating
+      </Text>
+      <RadioGroup mt="2" defaultValue={order}>
+        <Stack direction="column" name="sort" onChange={handleSort}>
+          <Radio name="sort" value="asc">
+            Asending
+          </Radio>
+          <Radio name="sort" value="desc">
+            Decending
+          </Radio>
+        </Stack>
+      </RadioGroup> */}
     </Box>
   );
 };

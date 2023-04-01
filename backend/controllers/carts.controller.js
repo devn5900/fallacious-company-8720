@@ -1,6 +1,6 @@
 const { cartsModel } = require("../models/carts.model");
 const { prodModel } = require("../models/products.model");
-
+const { ObjectId } = require("mongoose");
 const getCart = async (req, res) => {
   const id = req.body.userId;
   try {
@@ -43,23 +43,20 @@ const addToCart = async (req, res) => {
 const removeFromCart = async (req, res) => {
   const id = req.body.userId;
   const pordId = req.params.id;
-  console.log(id, pordId);
   try {
-    // .updateMany({userId:"6423e6fefa7dacbedd2440a8"},{$pull:{"cart":{_id:ObjectId("6422b24fd7e903639c08aa85")}}
-    const data = await prodModel.updateMany(
+    const data = await cartsModel.findOneAndUpdate(
       { userId: id },
       { $pull: { cart: pordId } }
     );
-    console.log(data);
     if (data) {
       res
         .status(200)
-        .send(JSON.stringify({ msg: "Product Added ", data: data }));
+        .send(JSON.stringify({ msg: "Product removed from cart " }));
     } else {
       res.status(206).send({ msg: "You are not Authorized for this action" });
     }
   } catch (error) {
-    res.status(500).send({ msg: "Internal Server Error", code: "60" });
+    res.status(500).send({ msg: "Internal Server Error", code: "59" });
   }
 };
 module.exports = {

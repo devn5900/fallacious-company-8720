@@ -46,7 +46,16 @@ const getProducts = async (req, res) => {
     query.type = { $regex: `.*${type}.*`, $options: "$i" };
   }
   if (category) {
-    query.category = { $regex: `.*${category}.*`, $options: "$i" };
+    if (Array.isArray(category)) {
+      if (!query.$or) {
+        query.$or = [];
+      }
+      category.forEach((el) => {
+        query.$or.push({ category: { $regex: `.*${el}.*`, $options: "$i" } });
+      });
+    } else {
+      query.category = { $regex: `.*${category}.*`, $options: "$i" };
+    }
   }
   if (design) {
     query.design = { $regex: `.*${design}.*`, $options: "$i" };
@@ -86,7 +95,24 @@ const getSingleProd = async (req, res) => {
     res.status(400).status({ msg: "No Data Found" });
   }
 };
+const updateProduct = async (req, res) => {
+  const prodId = req.params.id;
+  const usrId = req.body.userId;
+  delete req.body.userId;
+  const data = req.body;
+  try {
+    const status = await prodModel.findByIdAndUpdate(
+      { _id: prodId },
+      { $set: data }
+    );
+    res.status(200).send({ msg: "Product updated" });
+  } catch (error) {
+    res.status(500).send({ msg: "Internal Server Error", code: 101 });
+  }
+};
+
 module.exports = {
   getProducts,
   getSingleProd,
+  updateProduct,
 };

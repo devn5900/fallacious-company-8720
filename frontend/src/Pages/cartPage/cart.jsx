@@ -1,49 +1,67 @@
-// import { Heading } from "@chakra-ui/react";
-// import React from "react";
-
-// const Cart = ()=>{
-//     return(
-//         <div><Heading color={"black"}>whfn</Heading></div>
-//     )
-// }
-// export default Cart;
-
-
-
 import {
+  Text,
     Box,
     Flex,
     Heading,
     HStack,
+    Image,
     Link,
     Stack,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
-import { CartItem } from './cartItem'
-import { cartData } from './data'
+import React, { useEffect } from 'react';
+import { CartItem } from './cartItem';
+import { cartData, data1 } from './data'
 import { CartOrderSummary } from './orderSummary';
-  
-  export const Cart = () => (
-    <Box
+import {useDispatch,useSelector} from "react-redux"
+import { deleteCartData, getCartData } from '../../Redux/cartReducer/action';
+import loader from '../../Images/loader.gif'
+import SliderCrousel from './slickCrousel';
+import { DeleteIcon } from '@chakra-ui/icons';
+
+
+export const Cart = () => {
+
+   const {isLoading,isError,data} = useSelector((store)=>store.cartReducer);
+   console.log("store",isLoading,isError,data);
+   let length = data?.length;
+   const dispatch = useDispatch();
+   useEffect(()=>{
+    dispatch(getCartData());
+   },[]);
+
+   const handelDeleteItem = (id)=>{
+      dispatch(deleteCartData(id))
+   }
+
+   
+    return isLoading?<Image src={loader} h={"150px"} w={"150px"} m={'auto'} mt={"80px"} ></Image>: (
+      <>
+      <Box
       maxW={{ base: '3xl', lg: '7xl' }}
       mx="auto"
       px={{ base: '4', md: '8', lg: '12' }}
       py={{ base: '6', md: '8', lg: '12' }}
-    >
+      >
       <Stack
         direction={{ base: 'column', lg: 'row' }}
         align={{ lg: 'flex-start' }}
         spacing={{ base: '8', md: '16' }}
-      >
+        >
+        
         <Stack spacing={{ base: '8', md: '10' }} flex="2">
           <Heading fontSize="2xl" fontWeight="">
-            Shopping Cart (3 items)
+            Shopping Cart "({length} Items)"
           </Heading>
   
           <Stack spacing="6">
-            {cartData.map((item) => (
-              <CartItem key={item.id} {...item} />
-            ))}
+            { data?.length>0 && data?.map((item) => {
+              return(
+                <>
+                    <CartItem key={item.id} {...item} />
+                </>
+              )
+          })}
           </Stack>
         </Stack>
   
@@ -56,6 +74,21 @@ import { CartOrderSummary } from './orderSummary';
         </Flex>
       </Stack>
     </Box>
+
+          <Box w={"80%"}>
+            <div id="slider">
+                {
+                     data1.map((ele,index)=>{
+                        return(
+                            <SliderCrousel key={index} {...ele} />
+                        )
+                    })
+                }
+            </div>
+          </Box>
+
+      </>
   )
+  }
 
   export default Cart;
