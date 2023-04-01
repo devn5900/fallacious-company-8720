@@ -62,12 +62,17 @@ const LinksFoot = () => {
         <Grid templateColumns="repeat(4, 1fr)" gap={6}>
           {data?.map((el) => {
             return (
-              <GridItem>
+              <GridItem key={Date.now() + Math.random() * 2}>
                 <UnorderedList listStyleType={"none"}>
                   <Text fontWeight={"bold"}>{el.title}</Text>
                   {el?.chlids?.map((el) => {
                     return (
-                      <ListItem p={"1"} fontWeight={"thin"}>
+                      <ListItem
+                        key={Date.now() + Math.random() * 3}
+                        p={"1"}
+                        cursor={"pointer"}
+                        fontWeight={"thin"}
+                      >
                         {el}
                       </ListItem>
                     );
