@@ -29,10 +29,10 @@ export const getWomensData = (obj) => (dispatch) => {
     .catch((err) => dispatch({ type: GET_DATA_ERROR }));
 };
 //Accessories Data action function
-export const getAccessoriesData = (payload) => (dispatch) => {
+export const getAccessoriesData = (obj) => (dispatch) => {
   dispatch({ type: GET_DATA_REQUEST });
   axios
-    .get("https://vast-duck-coat.cyclic.app/products?type=Men")
+    .get("https://vast-duck-coat.cyclic.app/products?type=accessories", obj)
     .then((res) =>
       dispatch({ type: GET_ACCESSORIES_DATA_SUCESS, payload: res.data.data })
     )
