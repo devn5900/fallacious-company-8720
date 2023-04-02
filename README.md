@@ -1,33 +1,65 @@
-## Make a pull request before committing any changes and before making a pull request.
+# Fashion Store
 
-<br>
+    That was a collabrative Project with 5 Team Member This is an E-commerce Website  that is Inspired By Anthropology.com which mostly sells Womens Dresses,Shoes Furnitures and other items
 
-# Do 'npm i' for pre-installed packages
+# Team Details
 
-<br>
+     IA Name :- Akash
 
-## Home page -> Sajan Kumar
+     Team Lead :- Devesh Kumar Mishra
 
-## Product Page -> Kripa Shankar Pandey
+     Team Member :- Sajan Kumar
 
-## Men -> Kripa Shankar Pandey
+     Team Member :- Kripa ShankarPandey
 
-## Women -> Kripa Shankar Pandey
+     Team Member :- Sachin Tewatia
 
-## Accessories -> Kripa Shankar Pandey
+     Team Member :- Ved Prakash
 
-## Cart -> Sachin
+# Responsibility in Project
 
-## Payment -> Sachin
+    Home page -> Sajan Kumar
 
-## Shipping -> Card Details -> Ordered -> Sachin
+    Product Page -> Kripa Shankar Pandey
 
-## Signup -> Ved Prakash
+    Men -> Kripa Shankar Pandey
 
-## Login -> Ved Prakash
+    Women -> Kripa Shankar Pandey
 
-## Single Product Page -> Ved Prakash
+    Accessories -> Kripa Shankar Pandey
 
-## Backend -> Devesh Mishra
+    Cart -> Sachin
 
-## Admin -> Devesh Mishra
+    Payment -> Sachin
+
+    Shipping -> Card Details -> Ordered -> Sachin
+
+    Signup -> Ved Prakash
+
+    Login -> Ved Prakash
+
+    Single Product Page -> Ved Prakash
+
+    Backend -> Devesh Mishra
+
+    Admin -> Devesh Mishra
+
+# Landing Page
+
+# Product Page
+
+## Mens
+
+## Womens
+
+## Accessories
+
+# Product Detail Page
+
+# Signup Page
+
+# Login Page
+
+# Cart Page
+
+# Shipping Details Page
