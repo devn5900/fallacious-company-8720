@@ -9,32 +9,66 @@ import {
     Stack,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CartItem } from './cartItem';
-import { cartData, data1 } from './data'
 import { CartOrderSummary } from './orderSummary';
 import {useDispatch,useSelector} from "react-redux"
-import { deleteCartData, getCartData } from '../../Redux/cartReducer/action';
 import loader from '../../Images/loader.gif'
-import SliderCrousel from './slickCrousel';
-import { DeleteIcon } from '@chakra-ui/icons';
+import Slider from 'react-slick';
+import axios from 'axios';
+import { getCartData } from '../../Redux/cartReducer/action';
 
 
 export const Cart = () => {
 
-   const {isLoading,isError,data} = useSelector((store)=>store.cartReducer);
-   console.log("store",isLoading,isError,data);
-   let length = data?.length;
-   const dispatch = useDispatch();
-   useEffect(()=>{
-    dispatch(getCartData());
-   },[]);
+  const [slider2,setSlider2]=useState([]);
+  const {isLoading,isError,data} = useSelector((store)=>store.cartReducer);
+  let length = data?.length;
+  let totalCost=data?.map((ele)=>(ele.price)).reduce((acc,i)=>acc+i,0);
 
-   const handelDeleteItem = (id)=>{
-      dispatch(deleteCartData(id))
-   }
 
-   
+    const dispatch = useDispatch();
+    useEffect(()=>{ 
+      dispatch(getCartData());
+       axios.get(`https://vast-duck-coat.cyclic.app/products?type=Women`).then((res)=>{
+        setSlider2(res.data.data)
+       })
+  },[])
+
+  const settings2 = {
+    infinite: true,
+    speed: 1500,
+    slidesToShow: 5,
+    slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+
     return isLoading?<Image src={loader} h={"150px"} w={"150px"} m={'auto'} mt={"80px"} ></Image>: (
       <>
       <Box
@@ -58,7 +92,7 @@ export const Cart = () => {
             { data?.length>0 && data?.map((item) => {
               return(
                 <>
-                    <CartItem key={item.id} {...item} />
+                    <CartItem key={item._id} {...item} />
                 </>
               )
           })}
@@ -66,7 +100,7 @@ export const Cart = () => {
         </Stack>
   
         <Flex direction="column" align="center" flex="1">
-          <CartOrderSummary />
+          <CartOrderSummary totalCost={totalCost} />
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
             <Link color={mode('blue.500', 'blue.200')}>Continue shopping</Link>
@@ -75,17 +109,21 @@ export const Cart = () => {
       </Stack>
     </Box>
 
-          <Box w={"80%"}>
-            <div id="slider">
-                {
-                     data1.map((ele,index)=>{
-                        return(
-                            <SliderCrousel key={index} {...ele} />
-                        )
-                    })
-                }
+    <div className="top-rated" style={{marginBottom:"30px"}}>
+              <Heading size={"md"}>You May Also Like</Heading>
+              <hr style={{marginTop:"8px"}}/>
+              <hr />
             </div>
-          </Box>
+            <div style={{marginBottom:"-250px",width:"80%"}}>
+              <Slider {...settings2}>
+              {slider2.map((item) => (
+                <div className="slider" >
+                  <img className="slide1" src={item.image} alt="" />
+                </div>
+              ))}
+            </Slider>
+
+    </div>
 
       </>
   )
