@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 
 function MensProductsCard({
-  id,
+  _id,
   name,
   price,
   image,
@@ -33,16 +33,16 @@ function MensProductsCard({
         rounded="md"
         shadow="md"
       >
-        <Image
-          src={image}
-          w={"sm"}
-          alt={`Picture of ${name}`}
-          roundedTop="lg"
-        />
-        <Badge colorScheme="gray" mt={-20} mr={"100%"}>
-          {rating}⭐
-        </Badge>
-        <Link to={`/mens/${id}`}>
+        <Link to={`/product/${_id}/details`}>
+          <Image
+            src={image}
+            w={"sm"}
+            alt={`Picture of ${name}`}
+            roundedTop="lg"
+          />
+          <Badge colorScheme="gray" mt={-20} mr={"100%"}>
+            {rating}⭐
+          </Badge>
           <Box p="3">
             <Box alignItems="baseline" mt={-25}>
               <Badge

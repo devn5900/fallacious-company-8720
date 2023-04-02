@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 
 const AccessoriesProductsCard = ({
-  id,
+  _id,
   name,
   price,
   image,
@@ -33,7 +33,7 @@ const AccessoriesProductsCard = ({
         rounded="md"
         shadow="md"
       >
-        <Link to={`/accessories/${id}`}>
+        <Link to={`/product/${_id}/details`}>
           <Image
             src={image}
             w={"sm"}
