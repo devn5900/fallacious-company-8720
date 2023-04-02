@@ -5,8 +5,6 @@ import Footer from "../Components/Footer";
 import Index from "../Pages/Index";
 import Mens from "../Pages/ProductsPage/Mens";
 import Cart from "../Pages/cartPage/cart";
-import Womens from "../Pages/ProductsPage/Womens";
-import Checkout from "../Pages/checkoutPage/checkout";
 import Checkout from "../Pages/checkoutPage/checkout";
 import Womens from "../Pages/ProductsPage/Womens";
 import SignUp from "../Components/Authentication/Signup";
