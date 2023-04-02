@@ -145,6 +145,9 @@
         grid-template-columns: repeat(2,1fr);
     gap: 20px;
     }
+    .btn-2{
+        display: none;
+    }
 }
 @media (max-width:768px) {
    
@@ -154,6 +157,9 @@
     }
     .card-6{
         grid-template-columns: repeat(2,1fr); 
+    }
+    .btn-2{
+        display: none;
     }
 }
   

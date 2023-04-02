@@ -117,7 +117,7 @@ const Index = () => {
             <div className="card-4">
               <div>
                 <img src="https://images.ctfassets.net/5de70he6op10/2XUxhNlu24HaHTFRAghRS3/f30d5364574fc72b718e910f087b2685/484733194-ls_m5a.jpg?w=2640&q=80&fm=webp" alt="" />
-                <div className="btn-2" style={{marginLeft:"500px"}}><a href="">shop new clothing</a></div>
+                <div className="btn-2"  style={{marginLeft:"500px"}}><a href="">shop new clothing</a></div>
               </div>
             </div>
             <div className="top-rated">
