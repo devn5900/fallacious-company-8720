@@ -20,8 +20,11 @@ import { BsBagHeart } from "react-icons/bs";
 import { Link as ReachLink } from "react-router-dom";
 import useThrottle from "../../Hooks/useThrottle";
 import { searchItem } from "../../Utils/api";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getCartData } from "../../Redux/cartReducer/action";
 const MainNav = () => {
+  const { data } = useSelector((store) => store.cartReducer);
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [mapSearch, setMapSearch] = useState([]);
   const query = useThrottle(search, 500);
@@ -32,7 +35,9 @@ const MainNav = () => {
       setSearch(inp);
     }
   };
-
+  useEffect(() => {
+    dispatch(getCartData());
+  }, []);
   useEffect(() => {
     if (search === "") {
       setMapSearch([]);
@@ -212,7 +217,7 @@ const MainNav = () => {
                   bg="#6E7CBB"
                   color={"white"}
                 >
-                  0
+                  {data?.length || 0}
                 </Badge>
               </Box>
             </Link>

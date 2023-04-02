@@ -28,7 +28,14 @@ const AllRoutes = () => {
           }
         />
         <Route path="/mens" element={<Mens />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          }
+        />
         <Route path="/womens" element={<Womens />} />
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/register" element={<SignUp />} />

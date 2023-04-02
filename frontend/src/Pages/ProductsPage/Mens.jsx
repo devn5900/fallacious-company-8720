@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MensProductsCard from "../../Components/ProductPage/MensProductsCard";
 import { useLocation, useSearchParams } from "react-router-dom";
 import ProductSkeleton from "../../Components/ProductPage/ProductSkeleton";
+import { getCartData } from "../../Redux/cartReducer/action";
 
 const Mens = () => {
   // this hook will return you the url
@@ -29,6 +30,8 @@ const Mens = () => {
   };
 
   React.useEffect(() => {
+    dispatch(getCartData());
+
     dispatch(getMensData(obj));
   }, [location.search]);
   ///

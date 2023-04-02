@@ -6,6 +6,7 @@ import AccessoriesProductsCard from "../../Components/ProductPage/AccessoriesPro
 import { useLocation, useSearchParams } from "react-router-dom";
 import AccessoriesSlider from "../../Components/ProductPage/AccessoriesSlider";
 import ProductSkeleton from "../../Components/ProductPage/ProductSkeleton";
+import { getCartData } from "../../Redux/cartReducer/action";
 const Accessories = () => {
   // this hook will return you the url
   const location = useLocation();
@@ -13,6 +14,7 @@ const Accessories = () => {
   const { data, isError, isLoading } = useSelector(
     (store) => store.productReducer
   );
+
   const [searchParams] = useSearchParams();
 
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const Accessories = () => {
   };
 
   React.useEffect(() => {
+    dispatch(getCartData());
     dispatch(getAccessoriesData(obj));
   }, [location.search]);
   ///
