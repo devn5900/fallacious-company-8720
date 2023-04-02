@@ -12,7 +12,7 @@ import React from "react";
 
 const ProductSkeleton = () => {
   return (
-    <Box>
+    <Box mt="5">
       <Grid
         templateColumns={[
           "repeat(1, 1fr)",
