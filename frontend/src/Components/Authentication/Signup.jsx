@@ -101,7 +101,7 @@ export default function SignUp() {
             type="password"
             value={confirm_pass}
             onChange={(e) => Setpass(e.target.value)}
-            placeholder="Gender"
+            placeholder="Password"
           />
           <Button onClick={UserRegister} mt={"5px"} type="submit">
             Submit
