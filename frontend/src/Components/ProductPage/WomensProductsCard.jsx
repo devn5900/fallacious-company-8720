@@ -9,7 +9,7 @@ import {
 
 import { Link } from "react-router-dom";
 
-function MensProductsCard({
+const WomensProductsCard = ({
   id,
   name,
   price,
@@ -18,7 +18,7 @@ function MensProductsCard({
   brand,
   rating,
   offer,
-}) {
+}) => {
   let offerPresent = parseInt(offer);
   let discountMoney = (price * offerPresent) / 100;
   let finalPrice = price + discountMoney;
@@ -33,16 +33,17 @@ function MensProductsCard({
         rounded="md"
         shadow="md"
       >
-        <Image
-          src={image}
-          w={"sm"}
-          alt={`Picture of ${name}`}
-          roundedTop="lg"
-        />
-        <Badge colorScheme="gray" mt={-20} mr={"100%"}>
-          {rating}⭐
-        </Badge>
-        <Link to={`/mens/${id}`}>
+        <Link to={`/womens/${id}`}>
+          <Image
+            src={image}
+            w={"sm"}
+            alt={`Picture of ${name}`}
+            roundedTop="lg"
+          />
+          <Badge colorScheme="gray" mt={-20} mr={"100%"}>
+            {rating}⭐
+          </Badge>
+
           <Box p="3">
             <Box alignItems="baseline" mt={-25}>
               <Badge
@@ -100,6 +101,6 @@ function MensProductsCard({
       </Box>
     </Flex>
   );
-}
+};
 
-export default MensProductsCard;
+export default WomensProductsCard;
