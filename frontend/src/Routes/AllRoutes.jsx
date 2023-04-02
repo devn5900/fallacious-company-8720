@@ -6,6 +6,7 @@ import Index from "../Pages/Index";
 import Mens from "../Pages/ProductsPage/Mens";
 import Cart from "../Pages/cartPage/cart";
 import Womens from "../Pages/ProductsPage/Womens";
+import Accessories from "../Pages/ProductsPage/Accessories";
 const AllRoutes = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const AllRoutes = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/mens" element={<Mens />} />
         <Route path="/womens" element={<Womens />} />
+        <Route path="/accessories" element={<Accessories />} />
       </Routes>
       <Footer />
     </>

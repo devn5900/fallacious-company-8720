@@ -6,6 +6,8 @@ import { getMensData } from "../../Redux/productReducer/action";
 import { useDispatch, useSelector } from "react-redux";
 import MensProductsCard from "../../Components/ProductPage/MensProductsCard";
 import { useLocation, useSearchParams } from "react-router-dom";
+import ProductSkeleton from "../../Components/ProductPage/ProductSkeleton";
+
 const Mens = () => {
   // this hook will return you the url
   const location = useLocation();
@@ -43,17 +45,26 @@ const Mens = () => {
         >
           <SideBar />
         </Box>
-        <Box
-          w={["90%", "78%", "82%"]}
-          display="grid"
-          gridTemplateColumns={["1fr", "1fr 1fr", "1fr 1fr", "1fr 1fr 1fr"]}
-          ml={["auto", "auto"]}
-          mr={["auto", "auto"]}
-          gap="auto"
-        >
-          {data.length > 0 &&
-            data.map((e) => <MensProductsCard key={e._id} {...e} />)}
-        </Box>
+        {isLoading ? (
+          <Box w={["90%", "78%", "82%"]}>
+            <ProductSkeleton />
+          </Box>
+        ) : isError ? (
+          <p>Error: could not load content.</p>
+        ) : (
+          <Box
+            w={["90%", "78%", "82%"]}
+            display="grid"
+            gridTemplateColumns={["1fr", "1fr", "1fr 1fr", "1fr 1fr 1fr"]}
+            ml={["auto", "auto"]}
+            mr={["auto", "auto"]}
+            gap="auto"
+            overflow="hidden"
+          >
+            {data.length > 0 &&
+              data.map((e) => <MensProductsCard key={e._id} {...e} />)}
+          </Box>
+        )}
       </Flex>
     </Box>
   );
