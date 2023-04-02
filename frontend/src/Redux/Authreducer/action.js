@@ -16,15 +16,17 @@ export const logOutUser = () => {
 };
 export const userLogin = (payload) => (dispatch) => {
   dispatch(LoginReq());
-  Userlogin(payload)
+  return Userlogin(payload)
     .then((res) => {
       if (res.token) {
         localStorage.setItem("token", res.token);
         localStorage.setItem("name", res.data.name);
         localStorage.setItem("avatar", res.data.avatar);
         dispatch(LoginReqSucc(res));
+        return res;
       } else {
         dispatch(LoginReqFail(res.msg));
+        return res;
       }
     })
     .catch((err) => {

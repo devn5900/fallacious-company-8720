@@ -9,7 +9,7 @@ import {
   Input,
   useToast,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { userLogin } from "../../Redux/Authreducer/action";
 export default function Login() {
   const { load, isAuth, msg, isErr, token } = useSelector(
@@ -20,31 +20,37 @@ export default function Login() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  if (isAuth) {
+    return <Navigate to="/" />;
+  }
   const Userlogin = () => {
     const payload = {
       email: email,
       password: password,
     };
-    dispatch(userLogin(payload));
-    if (isAuth) {
-      return toast({
-        title: msg,
-        status: "success",
-        duration: 2000,
-        position: "top",
-        isClosable: true,
+    dispatch(userLogin(payload))
+      .then((res) => {
+        if (res.token) {
+          return toast({
+            title: res.msg,
+            status: "success",
+            duration: 2000,
+            position: "top",
+            isClosable: true,
+          });
+        } else {
+          return toast({
+            title: res.msg,
+            status: "error",
+            duration: 2000,
+            position: "top",
+            isClosable: true,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("er1");
       });
-    }
-    if (isErr) {
-      return toast({
-        title: msg,
-        status: "error",
-        duration: 2000,
-        position: "top",
-        isClosable: true,
-      });
-    }
   };
 
   return (
