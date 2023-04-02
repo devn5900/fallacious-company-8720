@@ -33,7 +33,7 @@ const AllRoutes = () => {
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/singleuser/:id" element={<Singleuser />} />
+        <Route path="/product/:id/details" element={<Singleuser />} />
       </Routes>
       <Footer />
     </>
