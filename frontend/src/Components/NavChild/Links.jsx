@@ -32,7 +32,14 @@ const Links = () => {
         justifyContent={["", "", "space-evenly"]}
       >
         {linkItem?.map((el) => {
-          return <NavLinks title={el.title} child={el.child} />;
+          return (
+            <NavLinks
+              key={Date.now() + Math.random() * 1}
+              title={el.title}
+              link={el?.link ? el?.link : "#"}
+              child={el.child}
+            />
+          );
         })}
       </Flex>
     </Box>

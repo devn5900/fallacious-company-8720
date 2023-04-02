@@ -14,22 +14,22 @@ import {
 } from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
 
-const NavLinks = ({ title, child }) => {
+const NavLinks = ({ title, link, child }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   //   console.log(child);
   return (
     <Menu isOpen={isOpen} onClose={onClose}>
-      <MenuButton
-        onMouseEnter={onOpen}
-        _hover={{ borderBottom: "2px solid #6E7CBB" }}
-        onMouseLeave={onClose}
-      >
-        <Link as={ReachLink} to={"/men"}>
+      <Link as={ReachLink} textDecor={"none"} to={link}>
+        <MenuButton
+          onMouseEnter={onOpen}
+          _hover={{ borderBottom: "2px solid #6E7CBB" }}
+          onMouseLeave={onClose}
+        >
           <Text fontSize={"0.9rem"} p={"4"}>
             {title}
           </Text>
-        </Link>
-      </MenuButton>
+        </MenuButton>
+      </Link>
       <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
         <MenuItem cursor={"default"} _hover={{ bg: "white" }}>
           <Box p="1rem">
