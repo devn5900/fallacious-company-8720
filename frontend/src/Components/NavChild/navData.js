@@ -118,7 +118,8 @@ export const linkItem = [
     ],
   },
   {
-    title: "Clothing",
+    title: "Mens",
+    link: "/mens",
     child: [
       {
         title: " Shop by Category",
@@ -180,7 +181,8 @@ export const linkItem = [
     ],
   },
   {
-    title: "Shoes",
+    title: "Womens",
+    link: "/womens",
     child: [
       {
         title: " Shop by Category",
@@ -243,6 +245,7 @@ export const linkItem = [
   },
   {
     title: "Accessories",
+    link: "/accessories",
     child: [
       {
         title: " Shop by Category",

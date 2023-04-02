@@ -1,0 +1,17 @@
+ ::-webkit-scrollbar {
+     width: 8px;
+ }
+
+ ::-webkit-scrollbar-track {
+     -webkit-box-shadow: auto;
+     -webkit-border-radius: auto;
+     border-radius: auto;
+     background: #6E7CBB;
+ }
+
+ ::-webkit-scrollbar-thumb {
+     -webkit-border-radius: 10px;
+     border-radius: 10px;
+     background: white;
+     -webkit-box-shadow: auto;
+ }

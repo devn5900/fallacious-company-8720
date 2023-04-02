@@ -9,7 +9,10 @@
     height: 250px;
     width: 200px;
 }
+
 #btn>button{
+    height: 40px;
+    width: 30px;
     border: 1px solid grey;
     padding: 8px;
     border-radius: 7px;
@@ -25,3 +28,51 @@
     color: black;
     margin-left: 100%;
 }
+
+
+
+.slider{
+
+    transform: scale(1);
+    transition: 0.3s ease-in-out; 
+}
+.slider:hover{
+    transform: scale(1.05);
+} 
+
+.slick-arrow.slick-prev,.slick-arrow.slick-next{
+    z-index: 1; 
+    height: 60px; 
+    width: 60px;
+    border-radius: 50%;
+    
+} 
+.slick-arrow.slick-prev::before,.slick-arrow.slick-next::before{
+    font-size: 50px;
+    color: #fff;
+}
+
+.slick-arrow.slick-next{
+    margin-right: 60px;
+    margin-top: -110px;
+    
+}
+.slick-arrow.slick-prev{
+    margin-left: 60px;
+    margin-top: -110px;
+}
+.top-rated{
+    margin-top: 30px;
+    font-weight: 450;
+}
+/* .card-6{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+} */
+.slick-slide {
+   margin: auto;
+   box-sizing: border-box;
+   margin: 0 8px;
+   overflow: hidden;
+  }

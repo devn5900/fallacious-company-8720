@@ -1,10 +1,15 @@
-import { Heading, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Heading, Text, useToast } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import { DeleteIcon } from '@chakra-ui/icons';
 import "./cart.css";
+import { useDispatch } from "react-redux";
+import { deleteCartData } from "../../Redux/cartReducer/action";
 
 export const CartItem = (props)=>{
-    const {image,name,price,discount,design,category} = props;
+    const {image,name,price,discount,design,category,_id} = props;
+    const disptach=useDispatch();
+    const toast = useToast();
+
     const [product,setProduct] = useState(1);
     const addProduct = ()=>{
         setProduct(prev=>prev+1);
@@ -21,7 +26,7 @@ export const CartItem = (props)=>{
                 <p>{name}</p>
                 <Text> {design}</Text>
                 <Text> category : {category}</Text>
-                <p> Price : $<span style={{color:"red",fontWeight:"bold"}}>{price}</span></p>
+                <p> Price : <span style={{color:"red",fontWeight:"bold"}}>₹{price}</span></p>
                 <Heading size={"md"} color={"gold"} fontWeight={"bold"}>{discount}</Heading>
                 <Text>Quantity :</Text>
                 <div id="butn">
@@ -31,7 +36,19 @@ export const CartItem = (props)=>{
                         <button onClick={addProduct}>+</button>
                     </div>
                     <div id="remove">
-                        <button><DeleteIcon ml={8} w={8} h={8} border={"1px solid black"} borderRadius={9} p={1} /></button>
+                        <button><DeleteIcon onClick={()=>{
+                            (disptach(deleteCartData(_id)));
+                            toast({
+                            size: "500",
+                            position: "top-center",
+                            title: "Done.",
+                            description: "Item removed from your cart.",
+                            status: "success",
+                            duration: 4000,
+                            isClosable: true,
+                    });
+                            }
+                        } ml={8} w={8} h={8} border={"1px solid black"} borderRadius={9} p={1} /></button>
                     </div>
                 </div>
             </div>
