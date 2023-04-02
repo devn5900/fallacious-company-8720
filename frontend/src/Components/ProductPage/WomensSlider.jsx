@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-const SideBar = () => {
+const WomensSlider = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initCategory = searchParams.getAll("category");
   const initOrder = searchParams.get("order");
@@ -97,4 +97,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default WomensSlider;

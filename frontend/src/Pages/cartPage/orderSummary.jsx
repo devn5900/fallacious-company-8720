@@ -8,11 +8,8 @@ import {
     Text,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
-import axios from 'axios';
-import { useEffect, useState } from 'react';
   import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
-  import { cartData } from './data';
   
   const OrderSummaryItem = (props) => {
     const { label, value, children } = props
@@ -27,28 +24,14 @@ import { useNavigate } from 'react-router';
   }
   
   
-  export const CartOrderSummary = () => {
-    const [price,setPrice] = useState([]);
+  export const CartOrderSummary = ({totalCost}) => {
     const navigate = useNavigate();
     
-    
-    useEffect(()=>{
-      axios.get("https://vast-duck-coat.cyclic.app/products/")
-      .then((res)=>setPrice(res.data)).catch((err)=>console.log(err))
-    },[]);
-    
-    let sum = 0;
-    const x = price.data?.map((ele)=>{
-      return  sum += ele.price;
-    })
-
-
     const handelChange = (e)=>{
       const {value,checked} = e.target;
-      if(checked){
-        sum -= value;
-        return sum;
-      }
+    }
+    const addPrice = ()=>{
+      localStorage.setItem("price",JSON.stringify(totalCost))
     }
 
     return (
@@ -57,8 +40,8 @@ import { useNavigate } from 'react-router';
         <Text color={'black'} size="md">Order Summary</Text>
   
         <Stack spacing="6">
-          <OrderSummaryItem label="Subtotal" value={`₹${60}`} />
-          <OrderSummaryItem label="Shipping + Tax" value={` ₹40 + ₹20 `+" = "+(40+20)}>
+          <OrderSummaryItem label="Subtotal" value={`₹${totalCost}+₹60`} />
+          <OrderSummaryItem label="Shipping + Tax" value={` ₹40 + ₹20 `+" = "+`₹${40+20}`}>
             <Link href="#" textDecor="underline">
               Calculate shipping
             </Link>
@@ -75,11 +58,14 @@ import { useNavigate } from 'react-router';
               Total
             </Text>
             <Text fontSize="xl" fontWeight="extrabold">
-              {sum}
+            ₹{totalCost+60}
             </Text>
           </Flex>
         </Stack>
-        <Button onClick={()=>navigate("/checkout")} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+        <Button onClick={()=>{
+          navigate("/checkout");
+          addPrice();
+        }} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
           Checkout
         </Button>
       </Stack>

@@ -35,11 +35,11 @@ export const cartData = [
 
   export const data1 = [
     {
-      "img1":"https://images.urbndata.com/is/image/Anthropologie/4130348690227_001_b2?$an-category$&qlt=80&fit=constrain",
-      "img2":"https://images.urbndata.com/is/image/Anthropologie/4139952400027_037_b2?$an-category$&qlt=80&fit=constrain",
-      "img3":"https://images.urbndata.com/is/image/Anthropologie/4139952400019_015_b2?$an-category$&qlt=80&fit=constrain",
-      "img4":"https://images.urbndata.com/is/image/Anthropologie/4139952400002_049_b?$an-category$&qlt=80&fit=constrain",
-      "img5":"https://images.urbndata.com/is/image/Anthropologie/83226613_048_b?$an-category$&qlt=80&fit=constrain",
-      "img6":"https://images.urbndata.com/is/image/Anthropologie/83226506_065_b?$an-category$&qlt=80&fit=constrain"
+      "img":"https://images.urbndata.com/is/image/Anthropologie/4130348690227_001_b2?$an-category$&qlt=80&fit=constrain",
+      "img":"https://images.urbndata.com/is/image/Anthropologie/4139952400027_037_b2?$an-category$&qlt=80&fit=constrain",
+      "img":"https://images.urbndata.com/is/image/Anthropologie/4139952400019_015_b2?$an-category$&qlt=80&fit=constrain",
+      "img":"https://images.urbndata.com/is/image/Anthropologie/4139952400002_049_b?$an-category$&qlt=80&fit=constrain",
+      "img":"https://images.urbndata.com/is/image/Anthropologie/83226613_048_b?$an-category$&qlt=80&fit=constrain",
+      "img":"https://images.urbndata.com/is/image/Anthropologie/83226506_065_b?$an-category$&qlt=80&fit=constrain"
     }
   ]
