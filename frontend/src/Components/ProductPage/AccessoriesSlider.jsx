@@ -8,13 +8,13 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-const SideBar = () => {
+const AccessoriesSlider = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initCategory = searchParams.getAll("category");
   const initOrder = searchParams.get("order");
   const [category, setCategory] = React.useState(initCategory || []);
   const [order, setOrder] = React.useState(initOrder || "");
-  // console.log(category, "orr");
+
   const handleFilter = (e) => {
     let newCategory = [...category];
     // If a user changes any category it should be stored in state
@@ -42,43 +42,43 @@ const SideBar = () => {
     <Box alignItems="center" mt="3">
       <Text fontWeight="bold">Filter by Category</Text>
       <Checkbox
-        value="T-Shirt"
-        isChecked={category.includes("T-Shirt")}
+        value="Casual Shoes"
+        isChecked={category.includes("Casual Shoes")}
         onChange={handleFilter}
       >
-        T-Shirt
+        Casual Shoes
       </Checkbox>
       <br />
       <Checkbox
-        value="Sweatshirt"
-        isChecked={category.includes("Sweatshirt")}
+        value="Flip Flops & Sliders"
+        isChecked={category.includes("Flip Flops & Sliders")}
         onChange={handleFilter}
       >
-        Sweatshirt
+        Flip Flops & Sliders
       </Checkbox>
       <br />
       <Checkbox
-        value="Kurta"
-        isChecked={category.includes("Kurta")}
+        value="Flats"
+        isChecked={category.includes("Flats")}
         onChange={handleFilter}
       >
-        Kurta
+        Flats
       </Checkbox>
       <br />
       <Checkbox
-        value="Hoodies"
-        isChecked={category.includes("Hoodies")}
+        value="Backpack"
+        isChecked={category.includes("Backpack")}
         onChange={handleFilter}
       >
-        Hoodies
+        Backpack
       </Checkbox>
       <br />
       <Checkbox
-        value="Shorts"
-        isChecked={category.includes("Shorts")}
+        value="Sliders"
+        isChecked={category.includes("Sliders")}
         onChange={handleFilter}
       >
-        Shorts
+        Sliders
       </Checkbox>
       <Text fontWeight="bold" mt="5">
         Sort By Price
@@ -97,4 +97,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default AccessoriesSlider;

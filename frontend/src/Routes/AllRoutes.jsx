@@ -7,9 +7,11 @@ import Mens from "../Pages/ProductsPage/Mens";
 import Cart from "../Pages/cartPage/cart";
 import Checkout from "../Pages/checkoutPage/checkout";
 import Womens from "../Pages/ProductsPage/Womens";
+import Accessories from "../Pages/ProductsPage/Accessories";
 import SignUp from "../Components/Authentication/Signup";
 import Login from "../Components/Authentication/login";
 import Singleuser from "../Components/Single_user/singleuser";
+import PrivateRoute from "./PrivateRoute";
 const AllRoutes = () => {
   return (
     <>
@@ -17,13 +19,21 @@ const AllRoutes = () => {
       <Routes>
         {/* Add your Routes here */}
         <Route path="/" element={<Index />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
         <Route path="/mens" element={<Mens />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/womens" element={<Womens />} />
+        <Route path="/accessories" element={<Accessories />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/singleuser/:id" element={<Singleuser/>}/>
+        <Route path="/product/:id/details" element={<Singleuser />} />
       </Routes>
       <Footer />
     </>

@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+  const price = JSON.parse(localStorage.getItem("price"))
   const [data, setData] = useState({});
   const [value, setValue] = useState("Cash on delivery");
   const [fname, setFname] = useState("");
@@ -96,7 +97,7 @@ const Checkout = () => {
       </Box> */}
       <Box>
         <Heading size={"lg"} m="3rem 4rem 6rem" color="#e40046">
-          Checkout »
+          Place Your Order »
         </Heading>
       </Box>
 
@@ -300,7 +301,7 @@ const Checkout = () => {
                   pb={".5rem"}
                 >
                   <Box as="b" fontSize="lg">
-                  <Text>Total Cart Amount:₹ 567</Text>
+                  <Text>Total Cart Amount: ₹{price}</Text>
                   </Box>
                   
                 </Flex>
@@ -404,6 +405,7 @@ const Checkout = () => {
                     //   isClosable: true,
                     // });
                     handleSubmit();
+                    localStorage.clear()
                   }}
                 >
                   Place Order
