@@ -17,14 +17,18 @@ import {
   List,
   ListItem,
   useToast,
+  Icon,
+  Badge,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import { MdLocalShipping } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../../Redux/cartReducer/action";
+import SngleProductSkeleton from "./SngleProductSkeleton";
 export default function Singleuser() {
   const { id } = useParams();
   const [data, setdata] = useState({});
+  const [load, setLoad] = useState(false);
   const toast = useToast();
   const dispatch = useDispatch();
   const {
@@ -42,11 +46,17 @@ export default function Singleuser() {
     tags,
   } = data;
   useEffect(() => {
-    console.log("hello");
+    setLoad(true);
     fetch(`https://vast-duck-coat.cyclic.app/products/${id}`)
       .then((res) => res.json())
-      .then((res) => setdata(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setdata(res.data);
+        setLoad(false);
+      })
+      .catch((err) => {
+        setLoad(false);
+        console.log(err);
+      });
   }, []);
   const addToCartFun = (data) => {
     dispatch(AddToCart(data))
@@ -82,149 +92,176 @@ export default function Singleuser() {
   };
   return (
     <div>
-      <Container maxW={"7xl"}>
-        <SimpleGrid
-          columns={{ base: 1, lg: 2 }}
-          spacing={{ base: 8, md: 10 }}
-          py={{ base: 18, md: 24 }}
-        >
-          <Flex>
-            <Image
-              rounded={"md"}
-              alt={"product image"}
-              src={image}
-              align={"center"}
-              w={"100%"}
-            />
-          </Flex>
-          <Stack spacing={{ base: 6, md: 10 }}>
-            <Box as={"header"}>
-              <Heading
-                lineHeight={1.1}
-                fontWeight={600}
-                fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-              >
-                {name}
-              </Heading>
-              <Text
-                color={useColorModeValue("gray.900", "gray.400")}
-                fontWeight={300}
-                fontSize={"2xl"}
-              >
-                ₹{price}
-              </Text>
-            </Box>
-
-            <Stack
-              spacing={{ base: 4, sm: 6 }}
-              direction={"column"}
-              divider={
-                <StackDivider
-                  borderColor={useColorModeValue("gray.200", "gray.600")}
-                />
-              }
-            >
-              <VStack spacing={{ base: 4, sm: 6 }}>
-                <Text fontSize={"lg"}>{description}</Text>
-              </VStack>
-              <Box>
-                <Text
-                  fontSize={{ base: "16px", lg: "18px" }}
-                  color={useColorModeValue("yellow.500", "yellow.300")}
-                  fontWeight={"500"}
-                  textTransform={"uppercase"}
-                  mb={"4"}
+      {!load ? (
+        <Container maxW={"7xl"}>
+          <SimpleGrid
+            columns={{ base: 1, lg: 2 }}
+            spacing={{ base: 8, md: 10 }}
+            py={{ base: 18, md: 24 }}
+          >
+            <Flex>
+              <Image
+                rounded={"md"}
+                alt={"product image"}
+                src={image}
+                align={"center"}
+                w={"100%"}
+              />
+            </Flex>
+            <Stack spacing={{ base: 6, md: 10 }}>
+              <Box as={"header"}>
+                <Heading
+                  lineHeight={1.1}
+                  fontWeight={600}
+                  fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
                 >
-                  Features
-                </Text>
+                  {name}
+                </Heading>
+                <Text fontWeight={300} fontSize={"2xl"}>
+                  ₹{price}
+                </Text>{" "}
+                <Flex gap={1}>
+                  {rating &&
+                    Array(5)
+                      .fill("")
+                      .map((el, i) => {
+                        if (i + 1 < Math.floor(rating)) {
+                          return (
+                            <Icon
+                              key={Math.random() * 100 + 13}
+                              as={BsStarFill}
+                              color={"yellow.500"}
+                            />
+                          );
+                        } else if (i + 1 == Math.floor(rating)) {
+                          return (
+                            <Icon
+                              key={Math.random() * 100 + 13}
+                              as={BsStarHalf}
+                              color={"yellow.500"}
+                            />
+                          );
+                        } else {
+                          return (
+                            <Icon
+                              key={Math.random() * 100 + 13}
+                              as={BsStar}
+                              color={"yellow.500"}
+                            />
+                          );
+                        }
+                      })}
+                </Flex>
+              </Box>
 
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                  <List textAlign={"center"} spacing={2}>
-                    <ListItem
-                      w={"50%"}
-                      fontWeight={"bold"}
-                      bg={"green.200"}
-                      color={"black"}
-                    >
-                      {offer}
+              <Stack
+                spacing={{ base: 4, sm: 6 }}
+                direction={"column"}
+                divider={<StackDivider borderColor={"gray.200"} />}
+              >
+                <VStack spacing={{ base: 4, sm: 6 }}>
+                  <Text fontSize={"lg"}>{description}</Text>
+                </VStack>{" "}
+                <Box>
+                  <Text
+                    fontSize={{ base: "16px", lg: "18px" }}
+                    color={"yellow.300"}
+                    fontWeight={"500"}
+                    textTransform={"uppercase"}
+                    mb={"4"}
+                  >
+                    Features
+                  </Text>
+
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+                    <Flex gap={"2"}>
+                      <Badge p="0.2rem">{`Offer ${offer}`}</Badge>
+                      <Badge p="0.2rem">{`Discount ${discount}`}</Badge>
+                      {tags?.map((el) => {
+                        return (
+                          <Badge p="0.2rem" colorScheme="green">
+                            {el.label}
+                          </Badge>
+                        );
+                      })}
+                    </Flex>
+                  </SimpleGrid>
+                </Box>
+                <Box>
+                  <Text
+                    fontSize={{ base: "16px", lg: "18px" }}
+                    color={"yellow.300"}
+                    fontWeight={"500"}
+                    textTransform={"uppercase"}
+                    mb={"4"}
+                  >
+                    Product Details
+                  </Text>
+
+                  <List spacing={2}>
+                    <ListItem>
+                      <Text as={"span"} fontWeight={"bold"}>
+                        Brand:&nbsp;
+                      </Text>
+                      {brand}
                     </ListItem>
-                    <ListItem
-                      w={"50%"}
-                      fontWeight={"bold"}
-                      bg={"green.200"}
-                      color={"black"}
-                    >
-                      {discount}
+                    <ListItem>
+                      <Text as={"span"} fontWeight={"bold"}>
+                        Design:&nbsp;
+                      </Text>
+                      {design}
+                    </ListItem>
+                    <ListItem>
+                      <Text as={"span"} fontWeight={"bold"}>
+                        For:&nbsp;
+                      </Text>
+                      {type}
+                    </ListItem>
+
+                    <ListItem>
+                      <Text as={"span"} fontWeight={"bold"}>
+                        Category:&nbsp;
+                      </Text>
+                      {category}
                     </ListItem>
                   </List>
-                </SimpleGrid>
-              </Box>
-              <Box>
-                <Text
-                  fontSize={{ base: "16px", lg: "18px" }}
-                  color={useColorModeValue("yellow.500", "yellow.300")}
-                  fontWeight={"500"}
-                  textTransform={"uppercase"}
-                  mb={"4"}
-                >
-                  Product Details
-                </Text>
+                </Box>
+              </Stack>
 
-                <List spacing={2}>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Brand:
-                    </Text>
-                    {brand}
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Gender:
-                    </Text>
-                    {type}
-                  </ListItem>
+              <Button
+                rounded={"none"}
+                w={"full"}
+                mt={8}
+                size={"lg"}
+                py={"7"}
+                bg={"gray.900"}
+                color={"white"}
+                textTransform={"uppercase"}
+                _hover={{
+                  transform: "translateY(2px)",
+                  boxShadow: "lg",
+                }}
+                onClick={() => {
+                  addToCartFun(data);
+                }}
+              >
+                Add to cart
+              </Button>
 
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Category:
-                    </Text>
-                    {category}
-                  </ListItem>
-                </List>
-              </Box>
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent={"center"}
+              >
+                <MdLocalShipping />
+                <Text>2-3 business days delivery</Text>
+              </Stack>
             </Stack>
-
-            <Button
-              rounded={"none"}
-              w={"full"}
-              mt={8}
-              size={"lg"}
-              py={"7"}
-              bg={useColorModeValue("gray.900", "gray.50")}
-              color={useColorModeValue("white", "gray.900")}
-              textTransform={"uppercase"}
-              _hover={{
-                transform: "translateY(2px)",
-                boxShadow: "lg",
-              }}
-              onClick={() => {
-                addToCartFun(data);
-              }}
-            >
-              Add to cart
-            </Button>
-
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent={"center"}
-            >
-              <MdLocalShipping />
-              <Text>2-3 business days delivery</Text>
-            </Stack>
-          </Stack>
-        </SimpleGrid>
-      </Container>
+          </SimpleGrid>
+        </Container>
+      ) : (
+        <SngleProductSkeleton />
+      )}
     </div>
   );
 }
