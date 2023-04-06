@@ -11,7 +11,7 @@ export const getMensData = (obj) => (dispatch) => {
   dispatch({ type: GET_DATA_REQUEST });
   // console.log("o", obj);
   axios
-    .get("https://vast-duck-coat.cyclic.app/products?type=Men", obj)
+    .get("https://vast-duck-coat.cyclic.app/products?type=Men&limit=15", obj)
     .then((res) =>
       dispatch({ type: GET_MENS_DATA_SUCESS, payload: res.data.data })
     )
@@ -22,7 +22,7 @@ export const getWomensData = (obj) => (dispatch) => {
   dispatch({ type: GET_DATA_REQUEST });
 
   axios
-    .get("https://vast-duck-coat.cyclic.app/products?type=Women", obj)
+    .get("https://vast-duck-coat.cyclic.app/products?type=Women&limit=15", obj)
     .then((res) =>
       dispatch({ type: GET_WOMENS_DATA_SUCESS, payload: res.data.data })
     )
@@ -32,7 +32,10 @@ export const getWomensData = (obj) => (dispatch) => {
 export const getAccessoriesData = (obj) => (dispatch) => {
   dispatch({ type: GET_DATA_REQUEST });
   axios
-    .get("https://vast-duck-coat.cyclic.app/products?type=accessories", obj)
+    .get(
+      "https://vast-duck-coat.cyclic.app/products?type=accessories&limit=15",
+      obj
+    )
     .then((res) =>
       dispatch({ type: GET_ACCESSORIES_DATA_SUCESS, payload: res.data.data })
     )

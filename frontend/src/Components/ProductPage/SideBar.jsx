@@ -8,19 +8,20 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-const SideBar = () => {
+const SideBar = ({ page }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initCategory = searchParams.getAll("category");
   const initOrder = searchParams.get("order");
   const [category, setCategory] = React.useState(initCategory || []);
   const [order, setOrder] = React.useState(initOrder || "");
-  // console.log(category, "orr");
+
   const handleFilter = (e) => {
     let newCategory = [...category];
     // If a user changes any category it should be stored in state
     // If the category is already present pop out of the state
+
     if (newCategory.includes(e.target.value)) {
-      newCategory.splice(newCategory.indexOf(e.target.value));
+      newCategory.splice(newCategory.indexOf(e.target.value), 1);
     } else {
       newCategory.push(e.target.value);
     }
@@ -36,6 +37,7 @@ const SideBar = () => {
       category,
     };
     order && (params.order = order);
+    page && (params.page = page);
     setSearchParams(params);
   }, [category, order]);
   return (
