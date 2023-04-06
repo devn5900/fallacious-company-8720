@@ -21,13 +21,13 @@ export const reducer = (state = initState, { type, payload }) => {
       return { ...state, isLoading: false, isError: true };
     }
     case GET_MENS_DATA_SUCESS: {
-      return { ...state, isLoading: false, data: payload };
+      return { ...state, isLoading: false, isError: false, data: payload };
     }
     case GET_WOMENS_DATA_SUCESS: {
-      return { ...state, isLoading: false, data: payload };
+      return { ...state, isLoading: false, isError: false, data: payload };
     }
     case GET_ACCESSORIES_DATA_SUCESS: {
-      return { ...state, isLoading: false, data: payload };
+      return { ...state, isLoading: false, isError: false, data: payload };
     }
     default: {
       return state;

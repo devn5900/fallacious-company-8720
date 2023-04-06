@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-const AccessoriesSlider = () => {
+const AccessoriesSlider = ({ page }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initCategory = searchParams.getAll("category");
   const initOrder = searchParams.get("order");
@@ -36,6 +36,7 @@ const AccessoriesSlider = () => {
       category,
     };
     order && (params.order = order);
+    page && (params.page = page);
     setSearchParams(params);
   }, [category, order]);
   return (
