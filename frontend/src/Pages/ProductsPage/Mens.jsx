@@ -1,5 +1,7 @@
 import { Box, Button, Flex, HStack, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { IconButton } from "@chakra-ui/react";
+import { FaArrowUp } from "react-icons/fa";
 
 import SideBar from "../../Components/ProductPage/SideBar";
 import { getMensData } from "../../Redux/productReducer/action";
@@ -14,7 +16,8 @@ const Mens = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initPage = searchParams.get("page");
   const [page, setPage] = React.useState(initPage || 1);
-
+  //scroll button state
+  const [showButton, setShowButton] = useState(false);
   // this hook will return you the url
   const location = useLocation();
 
@@ -45,7 +48,7 @@ const Mens = () => {
     },
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     // below function will called every time whenever anything will change on url
     // dispatch(getCartData());
 
@@ -53,6 +56,27 @@ const Mens = () => {
 
     return () => {};
   }, [location.search, page]);
+  //scroll to top button logic
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 100) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  //scroll to top button event
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <Box>
@@ -103,6 +127,19 @@ const Mens = () => {
                 next
               </Button>
             </HStack>
+
+            {showButton && (
+              <IconButton
+                aria-label="scroll to top"
+                icon={<FaArrowUp />}
+                onClick={handleScrollToTop}
+                position="fixed"
+                bottom="6"
+                right="6"
+                rounded={"full"}
+                colorScheme="facebook"
+              />
+            )}
           </Box>
         )}
       </Flex>

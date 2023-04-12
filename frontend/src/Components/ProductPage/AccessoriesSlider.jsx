@@ -20,7 +20,7 @@ const AccessoriesSlider = ({ page }) => {
     // If a user changes any category it should be stored in state
     // If the category is already present pop out of the state
     if (newCategory.includes(e.target.value)) {
-      newCategory.splice(newCategory.indexOf(e.target.value));
+      newCategory.splice(newCategory.indexOf(e.target.value), 1);
     } else {
       newCategory.push(e.target.value);
     }
