@@ -1,6 +1,7 @@
 import { Box, Button, Flex, HStack, Heading } from "@chakra-ui/react";
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { IconButton } from "@chakra-ui/react";
+import { FaArrowUp } from "react-icons/fa";
 import SideBar from "../../Components/ProductPage/SideBar";
 import { getWomensData } from "../../Redux/productReducer/action";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +15,8 @@ const Womens = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initPage = searchParams.get("page");
   const [page, setPage] = React.useState(initPage || 1);
-
+  //scroll button state
+  const [showButton, setShowButton] = useState(false);
   // this hook will return you the url
   const location = useLocation();
 
@@ -53,7 +55,27 @@ const Womens = () => {
 
     return () => {};
   }, [location.search, page]);
+  //scroll to top button logic
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 100) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  //scroll to top button event
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <Box>
       <Flex direction={["column", "row"]}>
@@ -103,6 +125,18 @@ const Womens = () => {
                 next
               </Button>
             </HStack>
+            {showButton && (
+              <IconButton
+                aria-label="scroll to top"
+                icon={<FaArrowUp />}
+                onClick={handleScrollToTop}
+                position="fixed"
+                bottom="6"
+                right="6"
+                rounded={"full"}
+                colorScheme="facebook"
+              />
+            )}
           </Box>
         )}
       </Flex>
