@@ -4,11 +4,12 @@ const {
   register,
   login,
   addAddress,
+  getUser,
 } = require("../controllers/users.controller");
 const { isAuthorized } = require("../middlewares/authorization.middleware");
 
 const userRouter = Router();
-
+userRouter.get("/", isAuthorized, getUser);
 userRouter.post("/register", regValid, register);
 userRouter.post("/login", logValid, login);
 userRouter.patch("/address", isAuthorized, addAddress);
