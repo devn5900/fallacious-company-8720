@@ -4,6 +4,7 @@ const { connection } = require("../connection/db.con");
 const { prodRouter } = require("../routes/products.routes");
 const { userRouter } = require("../routes/users.routes");
 const { cartRouter } = require("../routes/carts.routes");
+const { ordersRouter } = require("../routes/orders.routes");
 
 const app = express();
 require("dotenv").config();
@@ -14,6 +15,7 @@ app.use(cors());
 app.use("/products", prodRouter);
 app.use("/user", userRouter);
 app.use("/cart", cartRouter);
+app.use("/order", ordersRouter);
 /******************************************************/
 app.get("/", (req, res) => {
   res

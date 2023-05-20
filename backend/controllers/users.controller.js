@@ -76,8 +76,31 @@ const addAddress = async (req, res) => {
     }
   }
 };
+
+const getUser = async (req, res) => {
+  const id = req.body.userId;
+  try {
+    const status = await userModel.findById({ _id: id });
+    if (status) {
+      let data = {
+        name: status.name,
+        email: status.email,
+        _id: status._id,
+        address: status.address,
+        role: status.role,
+        avatar: status.avatar,
+      };
+      res.status(200).send({ data });
+    } else {
+      res.status(206).send({ msg: "Something went wrong" });
+    }
+  } catch (error) {
+    res.status(500).send({ msg: "Something went wrong", code: 92 });
+  }
+};
 module.exports = {
   register,
   addAddress,
   login,
+  getUser,
 };

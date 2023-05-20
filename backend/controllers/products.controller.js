@@ -23,13 +23,14 @@ const getProducts = async (req, res) => {
   if (q) {
     // {$or: [{ brand: { $regex: ".*boo.*" } }, { name: { $regex: ".*Boo.*" } }]}
     query.$or = [
-      { name: { $regex: `.*${q}.*`, $options: "$i" } },
-      { description: { $regex: `.*${q}.*`, $options: "$i" } },
-      { category: { $regex: `.*${q}.*`, $options: "$i" } },
-      { design: { $regex: `.*${q}.*`, $options: "$i" } },
-      { brand: { $regex: `.*${q}.*`, $options: "$i" } },
+      { name: { $regex: `.*${q}.*`, $options: "i" } },
+      { description: { $regex: `.*${q}.*`, $options: "i" } },
+      { category: { $regex: `.*${q}.*`, $options: "i" } },
+      { design: { $regex: `.*${q}.*`, $options: "i" } },
+      { brand: { $regex: `.*${q}.*`, $options: "i" } },
     ];
   }
+  // console.log(query);
   if (sort) {
     sortBy = { [sort]: order ? order : "asc" };
   }
@@ -51,23 +52,23 @@ const getProducts = async (req, res) => {
         query.$or = [];
       }
       category.forEach((el) => {
-        query.$or.push({ category: { $regex: `.*${el}.*`, $options: "$i" } });
+        query.$or.push({ category: { $regex: `.*${el}.*`, $options: "i" } });
       });
     } else {
-      query.category = { $regex: `.*${category}.*`, $options: "$i" };
+      query.category = { $regex: `.*${category}.*`, $options: "i" };
     }
   }
   if (design) {
-    query.design = { $regex: `.*${design}.*`, $options: "$i" };
+    query.design = { $regex: `.*${design}.*`, $options: "i" };
   }
   if (brand) {
-    query.brand = { $regex: `.*${brand}.*`, $options: "$i" };
+    query.brand = { $regex: `.*${brand}.*`, $options: "i" };
   }
   if (offer) {
-    query.offer = { $regex: `.*${offer}.*`, $options: "$i" };
+    query.offer = { $regex: `.*${offer}.*`, $options: "i" };
   }
   if (discount) {
-    query.discount = { $regex: `.*${discount}.*`, $options: "$i" };
+    query.discount = { $regex: `.*${discount}.*`, $options: "i" };
   }
   //   console.log(query);
   try {
